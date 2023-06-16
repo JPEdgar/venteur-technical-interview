@@ -3,6 +3,7 @@ const initialState = {
     isLoadingFlag: false,
     error: "",
     botSuggestion: "",
+    guessData: { editFlag: true, input: "", attemptList: [] },
 };
 
 export default initialState;
