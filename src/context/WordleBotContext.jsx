@@ -21,7 +21,7 @@ const WordleBotProvider = ({ children }) => {
             dispatch({type: WORDLEBOT_TYPES.SET_GUESS, payload: word})
         }
 
-        Initialize()
+        // Initialize()
     }, [])
 
     return (

@@ -28,12 +28,38 @@ const Test = () => {
         e.target.select();
     };
 
+    const handleClick = (attemptIndex, letterIndex) => {
+        let tempAttemptList = [...data.attemptList];
+        const tempLetterObj = tempAttemptList[attemptIndex][letterIndex];
+
+        if (tempLetterObj.code === "x") tempLetterObj.code = "y";
+        else if (tempLetterObj.code === "y") tempLetterObj.code = "g";
+        else tempLetterObj.code = "x";
+
+        tempAttemptList[attemptIndex][letterIndex] = tempLetterObj;
+
+        setData((curr) => ({ ...curr, attemptList: tempAttemptList }));
+    };
+
+    const createAttemptObject = (attempt) => {
+        const returnList = [];
+        const attemptList = attempt.split("");
+        for (let i = 0; i < attemptList.length; i++) {
+            returnList.push({ letter: attemptList[i], code: "x" });
+        }
+        return returnList;
+    };
+
     useEffect(() => {
         if (data.input?.length >= 5) {
-            const attemptList = data.attemptList;
-            attemptList.push(data.input.split(""));
-            setData((curr) => ({ ...curr, input: "", attemptList: attemptList }));
+            const attemptObject = createAttemptObject(data.input);
+            setData((curr) => ({
+                ...curr,
+                input: "",
+                attemptList: [...curr.attemptList, attemptObject],
+            }));
         }
+        console.log(data);
     }, [data]);
 
     return (
@@ -58,10 +84,31 @@ const Test = () => {
             </Form>
 
             {data.attemptList.length > 0 &&
-                data.attemptList.map((data, index) => {
+                data.attemptList.map((letterObject, attemptListIndex) => {
                     return (
-                        <Stack key={`letter-stack-${data}-${index}`} direction="horizontal" gap={4}>
-                            {data.map((letter, index) => <Button key={`button-stack-${letter}-${index}`} className="w-100">{letter}</Button>)}
+                        <Stack
+                            key={`letter-stack-${data.letter}-${attemptListIndex}-${Math.random()}`}
+                            direction="horizontal"
+                            gap={4}
+                        >
+                            {letterObject.map((letterObj, letterObjectIndex) => (
+                                <Button
+                                    key={`button-stack-${
+                                        letterObj.letter
+                                    }-${letterObjectIndex}-${Math.random()}`}
+                                    className="w-100"
+                                    onClick={() => handleClick(attemptListIndex, letterObjectIndex)}
+                                    variant={
+                                        letterObj.code === "x"
+                                            ? "secondary"
+                                            : letterObj.code === "y"
+                                            ? "warning"
+                                            : "success"
+                                    }
+                                >
+                                    {letterObj.letter}
+                                </Button>
+                            ))}
                         </Stack>
                     );
                 })}
