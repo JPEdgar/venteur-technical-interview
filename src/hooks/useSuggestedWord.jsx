@@ -6,9 +6,8 @@ import useWordleBotContext from "./context/useWordleBotContext";
 const useSuggestedWord = () => {
     const { state } = useWordleBotContext();
     
-    const suggestedWord = () => {
-        return state.botSuggestion
-    }
+    const suggestedWord = state.botSuggestion
+    
 
     return { suggestedWord };
 };

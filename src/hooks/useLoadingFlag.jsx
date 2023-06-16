@@ -2,12 +2,12 @@ import React from "react";
 
 import useWordleBotContext from "./context/useWordleBotContext";
 
-const useErrorMessage = () => {
+const useLoadingFlag = () => {
     const { state } = useWordleBotContext();
 
-    const errorMessage = state.error;
+    const isLoadingFlag = state.isLoadingFlag;
 
-    return { errorMessage };
+    return { isLoadingFlag };
 };
 
-export default useErrorMessage;
+export default useLoadingFlag;
