@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container } from "react-bootstrap";
 
-import Header from "./components/Header"
+import Header from "./components/Header";
 import Test from "./Test";
 
 // https://brandeps.com/logo-download/W/Wordle-logo-vector-01.svg
@@ -10,8 +10,8 @@ import Test from "./Test";
 
 const App = () => {
     return (
-        <Container style={{backgroundColor: "green", height: "100vh"}} >
-            <Header/>
+        <Container style={{ backgroundColor: "green", height: "100vh" }}>
+            <Header />
             {/* <Test/> */}
         </Container>
     );
