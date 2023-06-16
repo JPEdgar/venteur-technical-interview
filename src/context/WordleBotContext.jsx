@@ -5,7 +5,11 @@ const WordleBotContext = createContext();
 
 const WordleBotProvider = ({ children }) => {
     const [state, dispatch] = useReducer(wordleBotReducer, {});
-    return <WordleBotContext.Provider>{children}</WordleBotContext.Provider>;
+    return (
+        <WordleBotContext.Provider value={{ state, dispatch }}>
+            {children}
+        </WordleBotContext.Provider>
+    );
 };
 
 export { WordleBotContext, WordleBotProvider };
