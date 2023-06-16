@@ -2,7 +2,7 @@ const initialState = {
     guessList: [], // [{word: string, clue: string}]
     isLoadingFlag: false,
     error: "",
-    botSuggestion: ""
+    botSuggestion: "",
 };
 
 export default initialState;

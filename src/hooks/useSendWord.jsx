@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { sendWord as sendWordAction } from "../actions/wordleBotActions";
 
@@ -17,7 +17,7 @@ const useSendWord = () => {
             // console.log(result.message);
             dispatch({ type: WORDLEBOT_TYPES.SET_ERROR, payload: result });
         } else {
-            dispatch({type: WORDLEBOT_TYPES.SET_GUESS, payload: result})
+            dispatch({ type: WORDLEBOT_TYPES.SET_GUESS, payload: result });
             console.log(result);
         }
     };

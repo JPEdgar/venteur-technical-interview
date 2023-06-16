@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-
+import React from "react";
 
 import useWordleBotContext from "./context/useWordleBotContext";
 
 const useSuggestedWord = () => {
     const { state } = useWordleBotContext();
-    
-    const suggestedWord = state.botSuggestion
-    
+
+    const suggestedWord = state.botSuggestion;
 
     return { suggestedWord };
 };
