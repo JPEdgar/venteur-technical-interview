@@ -10,10 +10,22 @@ const Test = () => {
     const { suggestedWord } = useSuggestedWord();
     const { isLoadingFlag } = useLoadingFlag();
 
-    const [data, setData] = useState({ editFlag: true, input: "", attemptList: [] }); // {letter: "", code: "", edit: bool}
+    const resetData = () => {
+        return { editFlag: true, input: "", attemptList: [] };
+    };
+    const [data, setData] = useState(resetData()); // {letter: "", code: "", edit: bool}
 
     const Test = () => {
         sendWord([]);
+    };
+
+    const createAttemptObject = (attempt) => {
+        const returnList = [];
+        const attemptList = attempt.split("");
+        for (let i = 0; i < attemptList.length; i++) {
+            returnList.push({ letter: attemptList[i], code: "x", edit: false });
+        }
+        return returnList;
     };
 
     const handleChange = (e) => {
@@ -22,6 +34,30 @@ const Test = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let letterArray = [];
+        let codeArray = [];
+        const returnArray = [];
+        const { attemptList } = data;
+        // console.log(attemptList)
+        for (let i = 0; i < attemptList.length; i++) {
+            for (let j = 0; j < attemptList[i].length; j++) {
+                console.log(attemptList[i][j]);
+                letterArray.push(attemptList[i][j].letter);
+                codeArray.push(attemptList[i][j].code);
+            }
+            const word = letterArray.toString().replace(/,/g, "");
+            const clue = codeArray.toString().replace(/,/g, "");
+            returnArray.push({ word, clue });
+            letterArray = [];
+            codeArray = [];
+        }
+        // console.log(returnArray)
+        sendWord(returnArray);
+        // setData(resetData())
+        setData((curr) => ({
+            ...curr,
+            editFlag: true,
+        }));
     };
 
     const handleFocus = (e) => {
@@ -41,20 +77,9 @@ const Test = () => {
         setData((curr) => ({ ...curr, attemptList: tempAttemptList }));
     };
 
-    const createAttemptObject = (attempt) => {
-        const returnList = [];
-        const attemptList = attempt.split("");
-        for (let i = 0; i < attemptList.length; i++) {
-            returnList.push({ letter: attemptList[i], code: "x", edit: false });
-        }
-        return returnList;
-    };
-
     const handleBack = () => {
-        // console.log("data = ", data);
         const revisedAttemptList = [...data.attemptList];
         revisedAttemptList.pop();
-        // console.log("revisedAttemptList = ", revisedAttemptList);
         setData((curr) => ({
             ...curr,
             editFlag: true,
@@ -63,14 +88,12 @@ const Test = () => {
     };
 
     const handleToggle = (attemptListIndex, letterObjectIndex) => {
-        // console.log("data = ", data);
         const revisedAttemptList = [...data.attemptList];
         revisedAttemptList[attemptListIndex][letterObjectIndex].edit = true;
         setData((curr) => ({
             ...curr,
             attemptList: revisedAttemptList,
         }));
-        // editInput.current.select()
     };
 
     const handleBlur = (attemptListIndex, letterObjectIndex) => {
@@ -193,7 +216,9 @@ const Test = () => {
                                 )
                             )}
                             <div className="w-100 ms-4">
-                                <Button className="w-100 ">Submit</Button>
+                                <Button onClick={handleSubmit} className="w-100 ">
+                                    Submit
+                                </Button>
                             </div>
                         </Stack>
                     );

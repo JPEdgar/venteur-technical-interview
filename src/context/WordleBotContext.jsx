@@ -22,9 +22,9 @@ const WordleBotProvider = ({ children }) => {
             dispatch({type: WORDLEBOT_TYPES.SET_GUESS, payload: word})
         }
 
-        // Initialize()
+        Initialize()
 
-        dispatch({type: WORDLEBOT_TYPES.SET_GUESS, payload: {guess: "testa"}})
+        // dispatch({type: WORDLEBOT_TYPES.SET_GUESS, payload: {guess: "testa"}})
     }, [])
 
     return (
