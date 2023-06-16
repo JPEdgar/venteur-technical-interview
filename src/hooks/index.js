@@ -1,3 +1,4 @@
-import useSendWord from "./useSendWord"
+import useSendWord from "./useSendWord";
+import useErrorMessage from "./useErrorMessage";
 
-export {useSendWord}
+export { useSendWord, useErrorMessage };

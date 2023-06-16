@@ -1,7 +1,8 @@
 const initialState = {
     guessList: [], // [{word: string, clue: string}]
     isLoadingFlag: false,
-    error: ""
+    error: "",
+    botSuggestion: ""
 };
 
 export default initialState;
