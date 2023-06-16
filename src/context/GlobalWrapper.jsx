@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container } from "react-bootstrap";
 
-import WordleBotProvider from "./WordleBotContext";
+import { WordleBotProvider } from "./WordleBotContext";
 
 const GlobalWrapper = ({ children }) => {
     return (
