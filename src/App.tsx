@@ -1,16 +1,13 @@
-import { Container } from "@mui/material";
-import Layout from "./components/Layout";
-import Header from "./components/Header";
+import React from "react";
 
-function App() {
+import { Container } from "react-bootstrap";
+
+const App = () => {
     return (
-        <Layout>
-            <Container maxWidth="sm">
-                <Header />
-                {/* Insert App here */}
-            </Container>
-        </Layout>
+        <Container>
+            <></>
+        </Container>
     );
-}
+};
 
 export default App;
