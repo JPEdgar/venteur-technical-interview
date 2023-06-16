@@ -12,7 +12,7 @@ const App = () => {
     return (
         <Container style={{ backgroundColor: "green", height: "100vh" }}>
             <Header />
-            {/* <Test/> */}
+            <Test/>
         </Container>
     );
 };
