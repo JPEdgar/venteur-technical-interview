@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { Spinner, Form, Stack, Button } from "react-bootstrap";
+import { Spinner, Form, Stack, Button, SplitButton } from "react-bootstrap";
 
 import { useSendWord, useErrorMessage, useSuggestedWord, useLoadingFlag } from "./hooks";
 
@@ -10,7 +10,7 @@ const Test = () => {
     const { suggestedWord } = useSuggestedWord();
     const { isLoadingFlag } = useLoadingFlag();
 
-    const [data, setData] = useState({ input: "", attemptList: [] });
+    const [data, setData] = useState({ editFlag: true, input: "", attemptList: [] }); // {letter: "", code: "", edit: bool}
 
     const Test = () => {
         sendWord([]);
@@ -45,9 +45,49 @@ const Test = () => {
         const returnList = [];
         const attemptList = attempt.split("");
         for (let i = 0; i < attemptList.length; i++) {
-            returnList.push({ letter: attemptList[i], code: "x" });
+            returnList.push({ letter: attemptList[i], code: "x", edit: false });
         }
         return returnList;
+    };
+
+    const handleBack = () => {
+        // console.log("data = ", data);
+        const revisedAttemptList = [...data.attemptList];
+        revisedAttemptList.pop();
+        // console.log("revisedAttemptList = ", revisedAttemptList);
+        setData((curr) => ({
+            ...curr,
+            editFlag: true,
+            attemptList: revisedAttemptList,
+        }));
+    };
+
+    const handleToggle = (attemptListIndex, letterObjectIndex) => {
+        // console.log("data = ", data);
+        const revisedAttemptList = [...data.attemptList];
+        revisedAttemptList[attemptListIndex][letterObjectIndex].edit = true;
+        setData((curr) => ({
+            ...curr,
+            attemptList: revisedAttemptList,
+        }));
+        // editInput.current.select()
+    };
+
+    const handleBlur = (attemptListIndex, letterObjectIndex) => {
+        const revisedAttemptList = [...data.attemptList];
+        revisedAttemptList[attemptListIndex][letterObjectIndex].edit = false;
+        setData((curr) => ({
+            ...curr,
+            attemptList: revisedAttemptList,
+        }));
+    };
+
+    const handleEdit = (e, attemptListIndex, letterObjectIndex) => {
+        const revisedAttemptList = [...data.attemptList];
+        revisedAttemptList[attemptListIndex][letterObjectIndex].edit = false;
+        revisedAttemptList[attemptListIndex][letterObjectIndex].letter = e.target.value;
+
+        setData((curr) => ({ ...curr, attemptList: revisedAttemptList }));
     };
 
     useEffect(() => {
@@ -57,6 +97,7 @@ const Test = () => {
                 ...curr,
                 input: "",
                 attemptList: [...curr.attemptList, attemptObject],
+                editFlag: false,
             }));
         }
         console.log(data);
@@ -64,6 +105,7 @@ const Test = () => {
 
     return (
         <>
+            <button onClick={() => console.log(data)}>Log Data</button>
             <button onClick={() => Test()} disabled={isLoadingFlag}>
                 Test
             </button>
@@ -74,14 +116,17 @@ const Test = () => {
                 </div>
             )}
             {isLoadingFlag && <Spinner animation="border" />}
-            <Form onSubmit={handleSubmit}>
-                <Form.Control
-                    type="text"
-                    onChange={handleChange}
-                    maxLength={5}
-                    value={data.input}
-                />
-            </Form>
+
+            {data.editFlag && (
+                <Form onSubmit={handleSubmit}>
+                    <Form.Control
+                        type="text"
+                        onChange={handleChange}
+                        maxLength={5}
+                        value={data.input}
+                    />
+                </Form>
+            )}
 
             {data.attemptList.length > 0 &&
                 data.attemptList.map((letterObject, attemptListIndex) => {
@@ -91,24 +136,65 @@ const Test = () => {
                             direction="horizontal"
                             gap={4}
                         >
-                            {letterObject.map((letterObj, letterObjectIndex) => (
+                            <div className="w-100 me-4">
                                 <Button
-                                    key={`button-stack-${
-                                        letterObj.letter
-                                    }-${letterObjectIndex}-${Math.random()}`}
                                     className="w-100"
-                                    onClick={() => handleClick(attemptListIndex, letterObjectIndex)}
-                                    variant={
-                                        letterObj.code === "x"
-                                            ? "secondary"
-                                            : letterObj.code === "y"
-                                            ? "warning"
-                                            : "success"
-                                    }
+                                    variant="danger"
+                                    onClick={() => handleBack()}
                                 >
-                                    {letterObj.letter}
+                                    Back
                                 </Button>
-                            ))}
+                            </div>
+                            {letterObject.map((letterObj, letterObjectIndex) =>
+                                !data.attemptList[attemptListIndex][letterObjectIndex].edit ? (
+                                    <SplitButton
+                                        key={`button-stack-${
+                                            letterObj.letter
+                                        }-${letterObjectIndex}-${Math.random()}`}
+                                        className="w-100"
+                                        onClick={() =>
+                                            handleClick(attemptListIndex, letterObjectIndex)
+                                        }
+                                        variant={
+                                            letterObj.code === "x"
+                                                ? "secondary"
+                                                : letterObj.code === "y"
+                                                ? "warning"
+                                                : "success"
+                                        }
+                                        title={letterObj.letter}
+                                        show={false}
+                                        onToggle={() =>
+                                            handleToggle(attemptListIndex, letterObjectIndex)
+                                        }
+                                    />
+                                ) : (
+                                    <Form
+                                        onSubmit={handleSubmit}
+                                        key={`input-stack-${
+                                            letterObj.letter
+                                        }-${letterObjectIndex}-${Math.random()}`}
+                                        className="w-100"
+                                        onBlur={() =>
+                                            handleBlur(attemptListIndex, letterObjectIndex)
+                                        }
+                                    >
+                                        <Form.Control
+                                            type="text"
+                                            onChange={(e) =>
+                                                handleEdit(e, attemptListIndex, letterObjectIndex)
+                                            }
+                                            maxLength={1}
+                                            value={letterObj.letter}
+                                            autoFocus
+                                            onFocus={handleFocus}
+                                        />
+                                    </Form>
+                                )
+                            )}
+                            <div className="w-100 ms-4">
+                                <Button className="w-100 ">Submit</Button>
+                            </div>
                         </Stack>
                     );
                 })}
