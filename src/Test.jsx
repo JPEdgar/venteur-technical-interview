@@ -19,14 +19,14 @@ const Test = () => {
         sendWord([]);
     };
 
-    const createAttemptObject = (attempt) => {
-        const returnList = [];
-        const attemptList = attempt.split("");
-        for (let i = 0; i < attemptList.length; i++) {
-            returnList.push({ letter: attemptList[i], code: "x", edit: false });
-        }
-        return returnList;
-    };
+    // const createAttemptObject = (attempt) => {
+    //     const returnList = [];
+    //     const attemptList = attempt.split("");
+    //     for (let i = 0; i < attemptList.length; i++) {
+    //         returnList.push({ letter: attemptList[i], code: "x", edit: false });
+    //     }
+    //     return returnList;
+    // };
 
     const handleChange = (e) => {
         setData((curr) => ({ ...curr, input: e.target.value }));
@@ -45,8 +45,8 @@ const Test = () => {
                 letterArray.push(attemptList[i][j].letter);
                 codeArray.push(attemptList[i][j].code);
             }
-            const word = letterArray.toString().replace(/,/g, "");
-            const clue = codeArray.toString().replace(/,/g, "");
+            // const word = letterArray.toString().replace(/,/g, "");
+            // const clue = codeArray.toString().replace(/,/g, "");
             returnArray.push({ word, clue });
             letterArray = [];
             codeArray = [];
