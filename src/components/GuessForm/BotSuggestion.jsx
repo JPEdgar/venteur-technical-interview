@@ -1,13 +1,12 @@
 import React from "react";
 
-import {Spinner} from "react-bootstrap"
-
+import Spinner from "../elements/Spinner";
 import { useSuggestedWord, useLoadingFlag } from "../../hooks";
 
 const BotSuggestion = () => {
     const { suggestedWord } = useSuggestedWord();
-    const {isLoadingFlag} = useLoadingFlag()
-    return isLoadingFlag ?  <Spinner animation="border" /> : <div>I suggest {suggestedWord}</div>;
+    const { isLoadingFlag } = useLoadingFlag();
+    return isLoadingFlag ? <Spinner /> : <div>I suggest {suggestedWord}</div>;
 };
 
 export default BotSuggestion;
