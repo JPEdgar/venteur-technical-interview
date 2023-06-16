@@ -13,6 +13,10 @@ const wordleBotReducer = (state = {}, action) => {
                 error: "",
                 botSuggestion: action.payload.guess,
             };
+        case WORDLEBOT_TYPES.SET_GUESS_INPUT:
+            const setGuessInput_guessInput = state.guessData;
+            setGuessInput_guessInput.input = action.payload;
+            return { ...state, guessData: { ...setGuessInput_guessInput } };
         default:
             return state;
     }

@@ -2,16 +2,32 @@ import React from "react";
 
 import { Form } from "react-bootstrap";
 
-import { useLoadingFlag } from "../../hooks";
+import { useLoadingFlag, useGuessData, useErrorMessage } from "../../hooks";
+import { checkIfString } from "../../utils";
 
 const GuessInput = () => {
     const { isLoadingFlag } = useLoadingFlag();
+    const { guessData, setGuessInput } = useGuessData();
+    const { errorMessage, setErrorMessage } = useErrorMessage();
+
+    const handleChange = (e) => {
+        if (checkIfString(e.target.value)) setGuessInput(e.target.value);
+        else setErrorMessage("Only letters are allowed (A-Z)");
+    };
 
     return (
-        !isLoadingFlag && 
-        <Form onSubmit={null}>
-            <Form.Control type="text" onChange={null} maxLength={5} value={null} />
-        </Form>
+        <>
+            <Form onSubmit={null}>
+                <Form.Control
+                    type="text"
+                    onChange={handleChange}
+                    maxLength={5}
+                    value={guessData.input}
+                    disabled={isLoadingFlag}
+                />
+            </Form>
+            <p>{errorMessage}</p>
+        </>
     );
 };
 
