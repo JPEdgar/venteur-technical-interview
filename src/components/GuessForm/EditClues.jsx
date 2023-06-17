@@ -7,11 +7,12 @@ import {
     SubmitButton, // handleSubmit
     LetterButton, // handleClick , handleToggle, letterObject, attemptListIndex, letterObjectIndex
 } from "../elements";
-import { useGoBack } from "../../hooks";
+import { useGoBack, useToggleClue } from "../../hooks";
 import { createId } from "../../utils";
 
 const EditClues = ({ data, index }) => {
-    const {goBack} = useGoBack()
+    const { goBack } = useGoBack();
+    const { toggleClue } = useToggleClue();
     // console.log(data);
 
     const handleClick = (attemptIndex, letterIndex) => {
@@ -25,6 +26,8 @@ const EditClues = ({ data, index }) => {
         // tempAttemptList[attemptIndex][letterIndex] = tempLetterObj;
 
         // setData((curr) => ({ ...curr, attemptList: tempAttemptList }));
+        // console.log({ attemptIndex, letterIndex });
+        toggleClue(attemptIndex, letterIndex);
     };
 
     const handleToggle = (attemptListIndex, letterObjectIndex) => {
@@ -34,32 +37,25 @@ const EditClues = ({ data, index }) => {
     };
 
     const handleBack = () => {
-        // const revisedAttemptList = [...data.attemptList];
-        // revisedAttemptList.pop();
-        // setData((curr) => ({ ...curr, editFlag: true, attemptList: revisedAttemptList, }));
-        goBack()
+        goBack();
     };
 
-    
     const handleSubmit = (e) => {
         // e.preventDefault();
         // let letterArray = [];
         // let codeArray = [];
         // const returnArray = [];
         // const { attemptList } = data;
-        
         // for (let i = 0; i < attemptList.length; i++) {
         //     for (let j = 0; j < attemptList[i].length; j++) {
         //         console.log(attemptList[i][j]);
         //         letterArray.push(attemptList[i][j].letter);
         //         codeArray.push(attemptList[i][j].code);
-        //     }            
-            
+        //     }
         //     returnArray.push({ word, clue });
         //     letterArray = [];
         //     codeArray = [];
         // }
-        
         // sendWord(returnArray);
         // setData((curr) => ({ ...curr, editFlag: true, }));
     };
@@ -77,8 +73,8 @@ const EditClues = ({ data, index }) => {
                             attemptListIndex={index}
                             letterObjectIndex={letterIndex}
                             letterObject={letterData}
-                            handleClick={() => handleClick()}
-                            handleToggle={() => handleToggle()}
+                            handleClick={() => handleClick(index, letterIndex)}
+                            handleToggle={() => handleToggle(index, letterIndex)}
                         />
                     )
                 )}

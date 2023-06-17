@@ -41,6 +41,17 @@ const wordleBotReducer = (state = {}, action) => {
             goBack_state.editFlag = true;
             if (goBack_state.attemptList.length > 0) goBack_state.attemptList.pop();
             return { ...state, guessData: { ...goBack_state } };
+        case WORDLEBOT_TYPES.TOGGLE_CLUE:
+            const toggleClue_state = cloneDeep(state.guessData);
+            const toggleClue_attemptList = toggleClue_state.attemptList;
+            const toggleClue_tempObj =
+                toggleClue_attemptList[action.payload.attemptIndex][action.payload.letterIndex];
+
+            if (toggleClue_tempObj.code === "x") toggleClue_tempObj.code = "y";
+            else if (toggleClue_tempObj.code === "y") toggleClue_tempObj.code = "g";
+            else toggleClue_tempObj.code = "x";
+
+            return { ...state, guessData: { ...toggleClue_state } };
         default:
             return state;
     }
