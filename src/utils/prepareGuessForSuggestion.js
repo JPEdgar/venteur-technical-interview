@@ -7,7 +7,6 @@ const prepareGuessForSuggestion = (guessData) => {
     const { attemptList } = guessData;
     for (let i = 0; i < attemptList.length; i++) {
         for (let j = 0; j < attemptList[i].length; j++) {
-            console.log(attemptList[i][j]);
             letterArray.push(attemptList[i][j].letter);
             codeArray.push(attemptList[i][j].code);
         }

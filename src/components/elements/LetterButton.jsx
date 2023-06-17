@@ -20,7 +20,7 @@ const LetterButton = ({
                     ? "warning"
                     : "success"
             }
-            title={letterObject.letter}
+            title={letterObject.letter.toUpperCase()}
             show={false}
             onToggle={() => handleToggle(attemptListIndex, letterObjectIndex)}
         />

@@ -1,12 +1,13 @@
 import React from "react";
 
-import { Stack } from "react-bootstrap";
+import { Stack, Button } from "react-bootstrap";
 
 import {
     BackButton, // handleBack
     SubmitButton, // handleSubmit
     LetterButton, // handleClick , handleToggle, letterObject, attemptListIndex, letterObjectIndex
     EditLetterInput, // handleSubmit, handleBlur, handleEdit, handleFocus, letterObj, attemptListIndex, letterObjectIndex,
+    LockedLetterButton,
 } from "../elements";
 import { useGoBack, useToggleClue, useEditClue, useGuessData, useSendWord } from "../../hooks";
 import { createId, checkIfString, prepareGuessForSuggestion } from "../../utils";
@@ -52,7 +53,11 @@ const EditClues = ({ data, index }) => {
     return (
         <>
             <Stack direction="horizontal" gap={2}>
-                <BackButton handleBack={handleBack} />
+                {guessData.attemptList.length === index + 1 ? (
+                    <BackButton handleBack={handleBack} />
+                ) : (
+                    <div className="w-100 me-4 text-center">Guess {index + 1}</div>
+                )}
                 {data.map((letterData, letterIndex) =>
                     letterData.edit ? (
                         <EditLetterInput
@@ -64,7 +69,7 @@ const EditClues = ({ data, index }) => {
                             attemptListIndex={index}
                             letterObjectIndex={letterIndex}
                         />
-                    ) : (
+                    ) : guessData.attemptList.length === index + 1 ? (
                         <LetterButton
                             key={createId()}
                             attemptListIndex={index}
@@ -73,9 +78,15 @@ const EditClues = ({ data, index }) => {
                             handleClick={() => handleClick(index, letterIndex)}
                             handleToggle={() => handleToggle(index, letterIndex)}
                         />
+                    ) : (
+                        <LockedLetterButton key={createId()} letterObject={letterData} />
                     )
                 )}
-                <SubmitButton handleSubmit={handleSubmit} />
+                {guessData.attemptList.length === index + 1 ? (
+                    <SubmitButton handleSubmit={handleSubmit} />
+                ) : (
+                    <div className="w-100 ms-4"/>
+                )}
             </Stack>
         </>
     );
