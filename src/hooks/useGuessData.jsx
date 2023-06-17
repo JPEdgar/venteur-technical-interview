@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import useWordleBotContext from "./context/useWordleBotContext";
 import WORDLEBOT_TYPES from "../constants/types/wordleBotTypes";
@@ -17,13 +17,6 @@ const useGuessData = () => {
             dispatch({ type: WORDLEBOT_TYPES.SET_GUESS_OBJECT, payload: attemptObject });
         }
     };
-
-    // useEffect(() => {
-    //     // console.log(guessData);
-    //     if (guessData.input.length >= 5) {
-
-    //     }
-    // }, [guessData]);
 
     return { guessData, setGuessInput };
 };
