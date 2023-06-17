@@ -8,11 +8,11 @@ import {
     LetterButton, // handleClick , handleToggle, letterObject, attemptListIndex, letterObjectIndex
     EditLetterInput, // handleSubmit, handleBlur, handleEdit, handleFocus, letterObj, attemptListIndex, letterObjectIndex,
     LockedLetterButton,
-} from "../elements";
-import { useGoBack, useGuessData, useSendWord } from "../../hooks";
-import { createId, prepareGuessForSuggestion } from "../../utils";
+} from "../../elements";
+import { useGoBack, useGuessData, useSendWord } from "../../../hooks";
+import { createId, prepareGuessForSuggestion } from "../../../utils";
 
-const EditClues = ({ data, index }) => {
+const EditCluesRow = ({ data, index }) => {
     const { goBack } = useGoBack();
 
     const { guessData } = useGuessData();
@@ -65,4 +65,4 @@ const EditClues = ({ data, index }) => {
     );
 };
 
-export default EditClues;
+export default EditCluesRow;
