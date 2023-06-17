@@ -16,10 +16,6 @@ const GuessInput = () => {
         else setErrorMessage("Only letters are allowed (A-Z)");
     };
 
-    React.useEffect(() => {
-        // console.log(guessData);
-    }, [guessData]);
-
     return (
         <>
             <Form onSubmit={null}>
@@ -28,7 +24,7 @@ const GuessInput = () => {
                     onChange={handleChange}
                     maxLength={5}
                     value={guessData.input}
-                    disabled={isLoadingFlag}
+                    disabled={isLoadingFlag || !guessData.editFlag}
                 />
             </Form>
             <p>{errorMessage}</p>

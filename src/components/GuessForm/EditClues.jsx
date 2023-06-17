@@ -7,10 +7,12 @@ import {
     SubmitButton, // handleSubmit
     LetterButton, // handleClick , handleToggle, letterObject, attemptListIndex, letterObjectIndex
 } from "../elements";
+import { useGoBack } from "../../hooks";
 import { createId } from "../../utils";
 
 const EditClues = ({ data, index }) => {
-    console.log(data);
+    const {goBack} = useGoBack()
+    // console.log(data);
 
     const handleClick = (attemptIndex, letterIndex) => {
         // let tempAttemptList = [...data.attemptList];
@@ -35,6 +37,7 @@ const EditClues = ({ data, index }) => {
         // const revisedAttemptList = [...data.attemptList];
         // revisedAttemptList.pop();
         // setData((curr) => ({ ...curr, editFlag: true, attemptList: revisedAttemptList, }));
+        goBack()
     };
 
     
