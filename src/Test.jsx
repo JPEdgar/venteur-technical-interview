@@ -159,7 +159,7 @@ const Test = () => {
                             direction="horizontal"
                             gap={4}
                         >
-                            <div className="w-100 me-4">
+                            {/* <div className="w-100 me-4">
                                 <Button
                                     className="w-100"
                                     variant="danger"
@@ -167,59 +167,21 @@ const Test = () => {
                                 >
                                     Back
                                 </Button>
-                            </div>
+                            </div> */}
                             {letterObject.map((letterObj, letterObjectIndex) =>
                                 !data.attemptList[attemptListIndex][letterObjectIndex].edit ? (
-                                    <SplitButton
-                                        key={`button-stack-${
-                                            letterObj.letter
-                                        }-${letterObjectIndex}-${Math.random()}`}
-                                        className="w-100"
-                                        onClick={() =>
-                                            handleClick(attemptListIndex, letterObjectIndex)
-                                        }
-                                        variant={
-                                            letterObj.code === "x"
-                                                ? "secondary"
-                                                : letterObj.code === "y"
-                                                ? "warning"
-                                                : "success"
-                                        }
-                                        title={letterObj.letter}
-                                        show={false}
-                                        onToggle={() =>
-                                            handleToggle(attemptListIndex, letterObjectIndex)
-                                        }
-                                    />
+                                    // <SplitButton key={`button-stack-${ letterObj.letter }-${letterObjectIndex}-${Math.random()}`} className="w-100" onClick={() => handleClick(attemptListIndex, letterObjectIndex) } variant={ letterObj.code === "x" ? "secondary" : letterObj.code === "y" ? "warning" : "success" } title={letterObj.letter} show={false} onToggle={() => handleToggle(attemptListIndex, letterObjectIndex) } />
                                 ) : (
-                                    <Form
-                                        onSubmit={handleSubmit}
-                                        key={`input-stack-${
-                                            letterObj.letter
-                                        }-${letterObjectIndex}-${Math.random()}`}
-                                        className="w-100"
-                                        onBlur={() =>
-                                            handleBlur(attemptListIndex, letterObjectIndex)
-                                        }
-                                    >
-                                        <Form.Control
-                                            type="text"
-                                            onChange={(e) =>
-                                                handleEdit(e, attemptListIndex, letterObjectIndex)
-                                            }
-                                            maxLength={1}
-                                            value={letterObj.letter}
-                                            autoFocus
-                                            onFocus={handleFocus}
-                                        />
+                                    <Form onSubmit={handleSubmit} key={`input-stack-${ letterObj.letter }-${letterObjectIndex}-${Math.random()}`} className="w-100" onBlur={() => handleBlur(attemptListIndex, letterObjectIndex) } >
+                                        <Form.Control type="text" onChange={(e) => handleEdit(e, attemptListIndex, letterObjectIndex) } maxLength={1} value={letterObj.letter} autoFocus onFocus={handleFocus} />
                                     </Form>
                                 )
                             )}
-                            <div className="w-100 ms-4">
+                            {/* <div className="w-100 ms-4">
                                 <Button onClick={handleSubmit} className="w-100 ">
                                     Submit
                                 </Button>
-                            </div>
+                            </div> */}
                         </Stack>
                     );
                 })}

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Spinner from "../elements/Spinner";
+import {Spinner} from "../elements";
 import { useSuggestedWord, useLoadingFlag } from "../../hooks";
 
 const BotSuggestion = () => {

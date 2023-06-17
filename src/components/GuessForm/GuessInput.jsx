@@ -3,7 +3,7 @@ import React from "react";
 import { Form } from "react-bootstrap";
 
 import { useLoadingFlag, useGuessData, useErrorMessage } from "../../hooks";
-import { checkIfString } from "../../utils";
+import { checkIfString, createId } from "../../utils";
 import EditClues from "./EditClues";
 
 const GuessInput = () => {
@@ -33,7 +33,9 @@ const GuessInput = () => {
             </Form>
             <p>{errorMessage}</p>
             {guessData.attemptList.length > 0 &&
-                guessData.attemptList.map((attempListData, attempListIndex) => <EditClues key={`guessData-attemptList-map-${attempListIndex}-`}/>)}
+                guessData.attemptList.map((attempListData, attempListIndex) => (
+                    <EditClues key={createId()} data={attempListData} index={attempListIndex} />
+                ))}
         </>
     );
 };
