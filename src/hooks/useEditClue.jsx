@@ -17,7 +17,14 @@ const useEditClue = () => {
         });
     };
 
-    return { editClue, editClueLetter };
+    const blurFromClue = (e, attemptListIndex, letterObjectIndex) => {
+        dispatch({
+            type: WORDLEBOT_TYPES.BLUR_FROM_CLUE,
+            payload: { e, attemptListIndex, letterObjectIndex },
+        });
+    };
+
+    return { editClue, editClueLetter, blurFromClue };
 };
 
 export default useEditClue;

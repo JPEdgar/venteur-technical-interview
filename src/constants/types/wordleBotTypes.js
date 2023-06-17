@@ -8,6 +8,7 @@ const WORDLEBOT_TYPES = {
     TOGGLE_CLUE: "toggle-clue",
     EDIT_CLUE: "edit-clue",
     EDIT_CLUE_LETTER: "edit-clue-letter",
+    BLUR_FROM_CLUE: "blur-from-clue",
 };
 
 export default WORDLEBOT_TYPES;

@@ -14,7 +14,7 @@ import { createId } from "../../utils";
 const EditClues = ({ data, index }) => {
     const { goBack } = useGoBack();
     const { toggleClue } = useToggleClue();
-    const { editClue, editClueLetter } = useEditClue();
+    const { editClue, editClueLetter, blurFromClue } = useEditClue();
     // console.log(data);
 
     const handleClick = (attemptIndex, letterIndex) => {
@@ -52,10 +52,8 @@ const EditClues = ({ data, index }) => {
         // setData((curr) => ({ ...curr, editFlag: true, }));
     };
 
-    const handleBlur = (attemptListIndex, letterObjectIndex) => {
-        // const revisedAttemptList = [...data.attemptList];
-        // revisedAttemptList[attemptListIndex][letterObjectIndex].edit = false;
-        // setData((curr) => ({ ...curr, attemptList: revisedAttemptList, }));
+    const handleBlur = (e, attemptListIndex, letterObjectIndex) => {
+        blurFromClue(e, attemptListIndex, letterObjectIndex);
     };
 
     const handleEdit = (e, attemptListIndex, letterObjectIndex) => {
@@ -74,7 +72,7 @@ const EditClues = ({ data, index }) => {
                     letterData.edit ? (
                         <EditLetterInput
                             key={createId()}
-                            handleBlur={() => handleBlur(index, letterIndex)}
+                            handleBlur={(e) => handleBlur(e, index, letterIndex)}
                             handleEdit={(e) => handleEdit(e, index, letterIndex)}
                             handleFocus={handleFocus}
                             letterObj={letterData}

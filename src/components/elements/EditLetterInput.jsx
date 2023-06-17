@@ -16,7 +16,7 @@ const EditLetterInput = ({
         <Form
             onSubmit={handleSubmit}
             className="w-100"
-            onBlur={() => handleBlur(attemptListIndex, letterObjectIndex)}
+            onBlur={(e) => handleBlur(e, attemptListIndex, letterObjectIndex)}
         >
             <Form.Control
                 type="text"
