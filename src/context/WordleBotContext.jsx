@@ -11,7 +11,7 @@ const WordleBotProvider = ({ children }) => {
     const [state, dispatch] = useReducer(wordleBotReducer, initialState);
 
     useEffect(() => {
-        // console.log(state);
+        console.log(state);
     }, [state]);
 
     useEffect(() => {

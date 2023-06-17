@@ -19,11 +19,14 @@ const wordleBotReducer = (state = {}, action) => {
         case WORDLEBOT_TYPES.SET_ERROR:
             return { ...state, isLoadingFlag: false, error: action.payload.message };
         case WORDLEBOT_TYPES.SET_GUESS:
+            const setGuess_state = cloneDeep(state.guessData);
+            setGuess_state.editFlag = true;
             return {
                 ...state,
                 isLoadingFlag: false,
                 error: "",
                 botSuggestion: action.payload.guess,
+                guessData: { ...setGuess_state },
             };
         case WORDLEBOT_TYPES.SET_GUESS_INPUT:
             const setGuessInput_state = cloneDeep(state.guessData);

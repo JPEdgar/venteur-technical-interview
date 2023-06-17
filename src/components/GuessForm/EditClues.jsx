@@ -8,23 +8,21 @@ import {
     LetterButton, // handleClick , handleToggle, letterObject, attemptListIndex, letterObjectIndex
     EditLetterInput, // handleSubmit, handleBlur, handleEdit, handleFocus, letterObj, attemptListIndex, letterObjectIndex,
 } from "../elements";
-import { useGoBack, useToggleClue, useEditClue } from "../../hooks";
-import { createId } from "../../utils";
+import { useGoBack, useToggleClue, useEditClue, useGuessData, useSendWord } from "../../hooks";
+import { createId, checkIfString, prepareGuessForSuggestion } from "../../utils";
 
 const EditClues = ({ data, index }) => {
     const { goBack } = useGoBack();
     const { toggleClue } = useToggleClue();
     const { editClue, editClueLetter, blurFromClue } = useEditClue();
-    // console.log(data);
+    const { guessData } = useGuessData();
+    const { sendWord } = useSendWord();
 
     const handleClick = (attemptIndex, letterIndex) => {
         toggleClue(attemptIndex, letterIndex);
     };
 
     const handleToggle = (attemptListIndex, letterObjectIndex) => {
-        // const revisedAttemptList = [...data.attemptList];
-        // revisedAttemptList[attemptListIndex][letterObjectIndex].edit = true;
-        // setData((curr) => ({ ...curr, attemptList: revisedAttemptList, }));
         editClue(attemptListIndex, letterObjectIndex);
     };
 
@@ -34,22 +32,8 @@ const EditClues = ({ data, index }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // let letterArray = [];
-        // let codeArray = [];
-        // const returnArray = [];
-        // const { attemptList } = data;
-        // for (let i = 0; i < attemptList.length; i++) {
-        //     for (let j = 0; j < attemptList[i].length; j++) {
-        //         console.log(attemptList[i][j]);
-        //         letterArray.push(attemptList[i][j].letter);
-        //         codeArray.push(attemptList[i][j].code);
-        //     }
-        //     returnArray.push({ word, clue });
-        //     letterArray = [];
-        //     codeArray = [];
-        // }
-        // sendWord(returnArray);
-        // setData((curr) => ({ ...curr, editFlag: true, }));
+        const returnArray = prepareGuessForSuggestion(guessData);
+        sendWord(returnArray);
     };
 
     const handleBlur = (e, attemptListIndex, letterObjectIndex) => {
@@ -57,7 +41,8 @@ const EditClues = ({ data, index }) => {
     };
 
     const handleEdit = (e, attemptListIndex, letterObjectIndex) => {
-        editClueLetter(e, attemptListIndex, letterObjectIndex);
+        if (checkIfString(e.target.value)) editClueLetter(e, attemptListIndex, letterObjectIndex);
+        else blurFromClue(e, attemptListIndex, letterObjectIndex);
     };
 
     const handleFocus = (e) => {
