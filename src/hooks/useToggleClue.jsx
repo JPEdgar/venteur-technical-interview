@@ -6,8 +6,11 @@ import WORDLEBOT_TYPES from "../constants/types/wordleBotTypes";
 const useToggleClue = () => {
     const { dispatch } = useWordleBotContext();
 
-    const toggleClue = (attemptIndex, letterIndex) => {
-        dispatch({ type: WORDLEBOT_TYPES.TOGGLE_CLUE, payload: { attemptIndex, letterIndex } });
+    const toggleClue = (attemptIndex, letterIndex, override) => {
+        dispatch({
+            type: WORDLEBOT_TYPES.TOGGLE_CLUE,
+            payload: { attemptIndex, letterIndex, override },
+        });
     };
 
     return { toggleClue };
