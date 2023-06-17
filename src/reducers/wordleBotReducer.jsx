@@ -57,6 +57,15 @@ const wordleBotReducer = (state = {}, action) => {
                 action.payload.letterIndex
             ].edit = true;
             return { ...state, guessData: { ...editClue_state } };
+        case WORDLEBOT_TYPES.EDIT_CLUE_LETTER:
+            const editClueLetter_state = cloneDeep(state.guessData);
+            editClueLetter_state.attemptList[action.payload.attemptListIndex][
+                action.payload.letterObjectIndex
+            ].edit = false;
+            editClueLetter_state.attemptList[action.payload.attemptListIndex][
+                action.payload.letterObjectIndex
+            ].letter = action.payload.e.target.value;
+            return { ...state, guessData: { ...editClueLetter_state } };
         default:
             return state;
     }

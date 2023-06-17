@@ -6,6 +6,7 @@ import {
     BackButton, // handleBack
     SubmitButton, // handleSubmit
     LetterButton, // handleClick , handleToggle, letterObject, attemptListIndex, letterObjectIndex
+    EditLetterInput, // handleSubmit, handleBlur, handleEdit, handleFocus, letterObj, attemptListIndex, letterObjectIndex,
 } from "../elements";
 import { useGoBack, useToggleClue, useEditClue } from "../../hooks";
 import { createId } from "../../utils";
@@ -13,7 +14,7 @@ import { createId } from "../../utils";
 const EditClues = ({ data, index }) => {
     const { goBack } = useGoBack();
     const { toggleClue } = useToggleClue();
-    const { editClue } = useEditClue();
+    const { editClue, editClueLetter } = useEditClue();
     // console.log(data);
 
     const handleClick = (attemptIndex, letterIndex) => {
@@ -32,7 +33,7 @@ const EditClues = ({ data, index }) => {
     };
 
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         // let letterArray = [];
         // let codeArray = [];
         // const returnArray = [];
@@ -51,13 +52,35 @@ const EditClues = ({ data, index }) => {
         // setData((curr) => ({ ...curr, editFlag: true, }));
     };
 
+    const handleBlur = (attemptListIndex, letterObjectIndex) => {
+        // const revisedAttemptList = [...data.attemptList];
+        // revisedAttemptList[attemptListIndex][letterObjectIndex].edit = false;
+        // setData((curr) => ({ ...curr, attemptList: revisedAttemptList, }));
+    };
+
+    const handleEdit = (e, attemptListIndex, letterObjectIndex) => {
+        editClueLetter(e, attemptListIndex, letterObjectIndex);
+    };
+
+    const handleFocus = (e) => {
+        e.target.select();
+    };
+
     return (
         <>
             <Stack direction="horizontal" gap={2}>
                 <BackButton handleBack={handleBack} />
                 {data.map((letterData, letterIndex) =>
                     letterData.edit ? (
-                        <></>
+                        <EditLetterInput
+                            key={createId()}
+                            handleBlur={() => handleBlur(index, letterIndex)}
+                            handleEdit={(e) => handleEdit(e, index, letterIndex)}
+                            handleFocus={handleFocus}
+                            letterObj={letterData}
+                            attemptListIndex={index}
+                            letterObjectIndex={letterIndex}
+                        />
                     ) : (
                         <LetterButton
                             key={createId()}

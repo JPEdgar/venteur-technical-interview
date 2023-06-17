@@ -7,6 +7,7 @@ const WORDLEBOT_TYPES = {
     GO_BACK: "go-back",
     TOGGLE_CLUE: "toggle-clue",
     EDIT_CLUE: "edit-clue",
+    EDIT_CLUE_LETTER: "edit-clue-letter",
 };
 
 export default WORDLEBOT_TYPES;

@@ -10,7 +10,14 @@ const useEditClue = () => {
         dispatch({ type: WORDLEBOT_TYPES.EDIT_CLUE, payload: { attemptIndex, letterIndex } });
     };
 
-    return { editClue };
+    const editClueLetter = (e, attemptListIndex, letterObjectIndex) => {
+        dispatch({
+            type: WORDLEBOT_TYPES.EDIT_CLUE_LETTER,
+            payload: { e, attemptListIndex, letterObjectIndex },
+        });
+    };
+
+    return { editClue, editClueLetter };
 };
 
 export default useEditClue;

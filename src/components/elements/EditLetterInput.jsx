@@ -3,7 +3,6 @@ import React from "react";
 import { Form } from "react-bootstrap";
 
 const EditLetterInput = ({
-    handleSubmit,
     handleBlur,
     handleEdit,
     handleFocus,
@@ -11,6 +10,8 @@ const EditLetterInput = ({
     attemptListIndex,
     letterObjectIndex,
 }) => {
+    const handleSubmit = (e) => e.preventDefault();
+
     return (
         <Form
             onSubmit={handleSubmit}
