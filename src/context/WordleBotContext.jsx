@@ -16,16 +16,16 @@ const WordleBotProvider = ({ children }) => {
 
     useEffect(() => {
         const Initialize = async () => {
-            dispatch({type: WORDLEBOT_TYPES.SEND_REQUEST})
-            const word = await sendWord([])
-            console.log(word)
-            dispatch({type: WORDLEBOT_TYPES.SET_GUESS, payload: word})
-        }
+            dispatch({ type: WORDLEBOT_TYPES.SEND_REQUEST });
+            const word = await sendWord([]);
+            console.log(word);
+            dispatch({ type: WORDLEBOT_TYPES.SET_GUESS, payload: word });
+        };
 
         // Initialize()
 
-        dispatch({type: WORDLEBOT_TYPES.SET_GUESS, payload: {guess: "testa"}})
-    }, [])
+        dispatch({ type: WORDLEBOT_TYPES.SET_GUESS, payload: { guess: "testa" } });
+    }, []);
 
     return (
         <WordleBotContext.Provider value={{ state, dispatch }}>
