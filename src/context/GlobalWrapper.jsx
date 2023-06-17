@@ -7,7 +7,7 @@ import { WordleBotProvider } from "./WordleBotContext";
 const GlobalWrapper = ({ children }) => {
     return (
         <WordleBotProvider>
-            <Container style={{height: "100vh", backgroundColor: "cyan"}}>{children}</Container>;
+            <Container style={{height: "100vh", backgroundColor: "cyan2"}}>{children}</Container>;
         </WordleBotProvider>
     );
 };

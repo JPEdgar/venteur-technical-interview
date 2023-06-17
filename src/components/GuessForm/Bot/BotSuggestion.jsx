@@ -1,16 +1,17 @@
 import React from "react";
 
-import { Spinner } from "../elements";
-import { useSuggestedWord, useLoadingFlag } from "../../hooks";
+import Suggestion from "./Suggestion";
+import { Spinner } from "../../elements";
+import { useLoadingFlag } from "../../../hooks";
 
 const BotSuggestion = () => {
-    const { suggestedWord } = useSuggestedWord();
     const { isLoadingFlag } = useLoadingFlag();
+
     return isLoadingFlag ? (
         <Spinner />
     ) : (
         <div>
-            I suggest <span className="fs-3 text-uppercase">{suggestedWord}</span>
+            I suggest <Suggestion />
         </div>
     );
 };
