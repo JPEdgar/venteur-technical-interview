@@ -46,12 +46,17 @@ const wordleBotReducer = (state = {}, action) => {
             const toggleClue_attemptList = toggleClue_state.attemptList;
             const toggleClue_tempObj =
                 toggleClue_attemptList[action.payload.attemptIndex][action.payload.letterIndex];
-
             if (toggleClue_tempObj.code === "x") toggleClue_tempObj.code = "y";
             else if (toggleClue_tempObj.code === "y") toggleClue_tempObj.code = "g";
             else toggleClue_tempObj.code = "x";
-
             return { ...state, guessData: { ...toggleClue_state } };
+        case WORDLEBOT_TYPES.EDIT_CLUE:
+            const editClue_state = cloneDeep(state.guessData);
+            const editClue_attemptList = editClue_state.attemptList;
+            editClue_attemptList[action.payload.attemptIndex][
+                action.payload.letterIndex
+            ].edit = true;
+            return { ...state, guessData: { ...editClue_state } };
         default:
             return state;
     }

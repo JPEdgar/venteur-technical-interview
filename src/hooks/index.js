@@ -5,6 +5,7 @@ import useLoadingFlag from "./useLoadingFlag";
 import useGuessData from "./useGuessData";
 import useGoBack from "./useGoBack";
 import useToggleClue from "./useToggleClue";
+import useEditClue from "./useEditClue";
 
 export {
     useSendWord,
@@ -14,4 +15,5 @@ export {
     useGuessData,
     useGoBack,
     useToggleClue,
+    useEditClue,
 };

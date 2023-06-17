@@ -7,26 +7,16 @@ import {
     SubmitButton, // handleSubmit
     LetterButton, // handleClick , handleToggle, letterObject, attemptListIndex, letterObjectIndex
 } from "../elements";
-import { useGoBack, useToggleClue } from "../../hooks";
+import { useGoBack, useToggleClue, useEditClue } from "../../hooks";
 import { createId } from "../../utils";
 
 const EditClues = ({ data, index }) => {
     const { goBack } = useGoBack();
     const { toggleClue } = useToggleClue();
+    const { editClue } = useEditClue();
     // console.log(data);
 
     const handleClick = (attemptIndex, letterIndex) => {
-        // let tempAttemptList = [...data.attemptList];
-        // const tempLetterObj = tempAttemptList[attemptIndex][letterIndex];
-
-        // if (tempLetterObj.code === "x") tempLetterObj.code = "y";
-        // else if (tempLetterObj.code === "y") tempLetterObj.code = "g";
-        // else tempLetterObj.code = "x";
-
-        // tempAttemptList[attemptIndex][letterIndex] = tempLetterObj;
-
-        // setData((curr) => ({ ...curr, attemptList: tempAttemptList }));
-        // console.log({ attemptIndex, letterIndex });
         toggleClue(attemptIndex, letterIndex);
     };
 
@@ -34,6 +24,7 @@ const EditClues = ({ data, index }) => {
         // const revisedAttemptList = [...data.attemptList];
         // revisedAttemptList[attemptListIndex][letterObjectIndex].edit = true;
         // setData((curr) => ({ ...curr, attemptList: revisedAttemptList, }));
+        editClue(attemptListIndex, letterObjectIndex);
     };
 
     const handleBack = () => {

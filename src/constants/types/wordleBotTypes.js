@@ -6,6 +6,7 @@ const WORDLEBOT_TYPES = {
     SET_GUESS_OBJECT: "set-guess-object",
     GO_BACK: "go-back",
     TOGGLE_CLUE: "toggle-clue",
+    EDIT_CLUE: "edit-clue",
 };
 
 export default WORDLEBOT_TYPES;
