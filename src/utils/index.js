@@ -6,6 +6,7 @@ import createId from "./createId";
 import prepareGuessForSuggestion from "./prepareGuessForSuggestion";
 import createSuggestionHistory from "./createSuggestionHistory";
 import getHistoryLetter from "./getHistoryLetter";
+import createColorList from "./createColorList";
 
 export {
     createAttemptObject,
@@ -16,4 +17,5 @@ export {
     prepareGuessForSuggestion,
     createSuggestionHistory,
     getHistoryLetter,
+    createColorList,
 };

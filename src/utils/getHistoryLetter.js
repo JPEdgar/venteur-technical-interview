@@ -7,4 +7,4 @@ const getHistoryLetter = (greenListObj, yellowListObj, blackList, attemptObject)
     else return ""; // not in list at this index
 };
 
-export default getHistoryLetter
+export default getHistoryLetter;
