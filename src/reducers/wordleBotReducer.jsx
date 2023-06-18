@@ -19,7 +19,7 @@ import { cloneDeep } from "../utils";
 // };
 
 const wordleBotReducer = (state = {}, action) => {
-    // console.log("in wordleBotReducer > {state, action} = ", {state, action})
+    console.log("in wordleBotReducer > {state, action} = ", {state, action})
     switch (action.type) {
         case WORDLEBOT_TYPES.SEND_REQUEST:
             return { ...state, isLoadingFlag: true, error: "", botSuggestion: "" };
@@ -33,14 +33,27 @@ const wordleBotReducer = (state = {}, action) => {
         case WORDLEBOT_TYPES.SET_BOT_SUGGESTION:
             const setGuess_state = cloneDeep(state.guessData);
             setGuess_state.editFlag = true;
-            if (action.payload.request?.historyList?.greenList) setGuess_state.greenList= action.payload.request.historyList.greenList
-            if (action.payload.request?.historyList?.yellowList) setGuess_state.yellowList= action.payload.request.historyList.yellowList
-            if (action.payload.request?.historyList?.blackList) setGuess_state.blackList=  action.payload.request.historyList.blackList
-            return { ...state, isLoadingFlag: false, error: "", botSuggestion: action.payload.result.guess, guessData: { ...setGuess_state } };
+            if (action.payload.request?.historyList?.greenList) {
+                setGuess_state.greenList = action.payload.request.historyList.greenList;
+            }
+            if (action.payload.request?.historyList?.yellowList) {
+                setGuess_state.yellowList = action.payload.request.historyList.yellowList;
+            }
+            if (action.payload.request?.historyList?.blackList) {
+                setGuess_state.blackList = action.payload.request.historyList.blackList;
+            }
+
+            // console.log(setGuess_state);
+            return {
+                ...state,
+                isLoadingFlag: false,
+                error: "",
+                botSuggestion: action.payload.result.guess,
+                guessData: { ...setGuess_state },
+            };
 
 
-
-
+            
         case WORDLEBOT_TYPES.SET_GUESS_INPUT:
             const setGuessInput_state = cloneDeep(state.guessData);
             setGuessInput_state.input = action.payload;
@@ -64,32 +77,41 @@ const wordleBotReducer = (state = {}, action) => {
         case WORDLEBOT_TYPES.TOGGLE_CLUE:
             const toggleClue_state = cloneDeep(state.guessData);
             const toggleClue_attemptList = toggleClue_state.attemptList;
-            const toggleClue_tempObj = toggleClue_attemptList[action.payload.attemptIndex][action.payload.letterIndex];
+            const toggleClue_tempObj =
+                toggleClue_attemptList[action.payload.attemptIndex][action.payload.letterIndex];
             if (action.payload.override) toggleClue_tempObj.code = action.payload.override;
             else if (toggleClue_tempObj.code === "x") toggleClue_tempObj.code = "y";
             else if (toggleClue_tempObj.code === "y") toggleClue_tempObj.code = "g";
             else toggleClue_tempObj.code = "x";
-            toggleClue_state.editFlag=false;
+            toggleClue_state.editFlag = false;
             return { ...state, guessData: { ...toggleClue_state } };
 
         case WORDLEBOT_TYPES.EDIT_CLUE:
             const editClue_state = cloneDeep(state.guessData);
             const editClue_attemptList = editClue_state.attemptList;
-            editClue_attemptList[action.payload.attemptIndex][ action.payload.letterIndex ].edit = true;
-            editClue_state.editFlag=false
+            editClue_attemptList[action.payload.attemptIndex][
+                action.payload.letterIndex
+            ].edit = true;
+            editClue_state.editFlag = false;
             return { ...state, guessData: { ...editClue_state } };
 
         case WORDLEBOT_TYPES.EDIT_CLUE_LETTER:
             const editClueLetter_state = cloneDeep(state.guessData);
-            editClueLetter_state.attemptList[action.payload.attemptListIndex][ action.payload.letterObjectIndex ].edit = false;
-            editClueLetter_state.attemptList[action.payload.attemptListIndex][ action.payload.letterObjectIndex ].letter = action.payload.e.target.value;
-            editClueLetter_state.editFlag=false
+            editClueLetter_state.attemptList[action.payload.attemptListIndex][
+                action.payload.letterObjectIndex
+            ].edit = false;
+            editClueLetter_state.attemptList[action.payload.attemptListIndex][
+                action.payload.letterObjectIndex
+            ].letter = action.payload.e.target.value;
+            editClueLetter_state.editFlag = false;
             return { ...state, guessData: { ...editClueLetter_state } };
 
         case WORDLEBOT_TYPES.BLUR_FROM_CLUE:
             const blurFromClue_state = cloneDeep(state.guessData);
-            blurFromClue_state.attemptList[action.payload.attemptListIndex][ action.payload.letterObjectIndex ].edit = false;
-            blurFromClue_state.editFlag=false
+            blurFromClue_state.attemptList[action.payload.attemptListIndex][
+                action.payload.letterObjectIndex
+            ].edit = false;
+            blurFromClue_state.editFlag = false;
             return { ...state, guessData: { ...blurFromClue_state } };
 
         default:

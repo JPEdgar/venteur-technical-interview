@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 
 import { SplitButton, Button, ButtonGroup } from "react-bootstrap";
 
-import { useToggleClue, useEditClue } from "../../hooks";
+import { useToggleClue, useEditClue, useGuessData } from "../../hooks";
+import { getHistoryLetter } from "../../utils";
 
 const LetterButton = ({ letterObject, attemptListIndex, letterObjectIndex }) => {
     const { toggleClue } = useToggleClue();
     const { editClue } = useEditClue();
+    const { guessData } = useGuessData();
 
     const handleClick = (attemptIndex, letterIndex, override) => {
         toggleClue(attemptIndex, letterIndex, override);
