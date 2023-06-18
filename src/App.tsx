@@ -11,7 +11,7 @@ import GuessForm from "./components/GuessForm";
 const App = () => {
     return (
         <>
-            <Container style={{ height: "100vh", backgroundColor: "cyan2" }}>
+            <Container>
                 <Header />
                 <GuessForm />
             </Container>

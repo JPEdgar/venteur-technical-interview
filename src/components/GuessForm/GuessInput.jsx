@@ -37,7 +37,7 @@ const GuessInput = () => {
                     placeholder="Enter your guess..."
                 />
             </InputGroup>
-            <p style={{ color: "red" }}>{errorMessage}</p>
+            <p>{errorMessage}</p>
         </>
     );
 };

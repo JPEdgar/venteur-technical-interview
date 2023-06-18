@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Genos&display=swap");
+
+$bot-blue: #1fbcf0;
+
+.bot-header {
+    font-size: 4rem;
+    font-family: "Genos", sans-serif;
+    color: $bot-blue;
+    display: flex;
+    align-items: center;
+}
+
+.bot-icon {
+    color: $bot-blue;
+}
+
+.test1 {
+    background-color: pink;
+}
+.test2 {
+    background-color: orange;
+}
+.test3 {
+    background-color: purple;
+}
