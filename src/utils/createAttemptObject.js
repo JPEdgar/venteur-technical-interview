@@ -7,4 +7,4 @@ const createAttemptObject = (attempt) => {
     return returnList;
 };
 
-export default createAttemptObject
+export default createAttemptObject;

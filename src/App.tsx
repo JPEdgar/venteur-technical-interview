@@ -8,15 +8,13 @@ import GuessForm from "./components/GuessForm";
 // https://brandeps.com/logo-download/W/Wordle-logo-vector-01.svg
 // <i class="fa-solid fa-robot"></i>
 
-/* BUGS
-
-*/
-
 const App = () => {
     return (
         <>
-            <Header />
-            <GuessForm/>
+            <Container style={{ height: "100vh", backgroundColor: "cyan2" }}>
+                <Header />
+                <GuessForm />
+            </Container>
         </>
     );
 };

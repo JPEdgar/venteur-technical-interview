@@ -12,14 +12,11 @@ import { cloneDeep } from "../utils";
 //         editFlag: true,
 //         input: "",
 //         attemptList: [], // an array of objects:  [{letter: string, code: string, edit: bool}]
-//         greenList: [], // an array of objects with the "g" code:  [{index: int, letter: string}]
-//         yellowList: [], // an array of objects with the "y" code:  [{index: int, letter: string}]
-//         blackList: "",  // a string of letters with the "x" code
 //     },
 // };
 
 const wordleBotReducer = (state = {}, action) => {
-    console.log("in wordleBotReducer > {state, action} = ", {state, action})
+    // console.log("in wordleBotReducer > {state, action} = ", { state, action });
     switch (action.type) {
         case WORDLEBOT_TYPES.SEND_REQUEST:
             return { ...state, isLoadingFlag: true, error: "", botSuggestion: "" };
@@ -27,41 +24,24 @@ const wordleBotReducer = (state = {}, action) => {
         case WORDLEBOT_TYPES.SET_ERROR:
             return { ...state, isLoadingFlag: false, error: action.payload.message };
 
-
-
-        // takes {request: {wordList, historyList}, result: {guess}}
         case WORDLEBOT_TYPES.SET_BOT_SUGGESTION:
+            console.log(action.payload)
             const setGuess_state = cloneDeep(state.guessData);
             setGuess_state.editFlag = true;
-            if (action.payload.request?.historyList?.greenList) {
-                setGuess_state.greenList = action.payload.request.historyList.greenList;
-            }
-            if (action.payload.request?.historyList?.yellowList) {
-                setGuess_state.yellowList = action.payload.request.historyList.yellowList;
-            }
-            if (action.payload.request?.historyList?.blackList) {
-                setGuess_state.blackList = action.payload.request.historyList.blackList;
-            }
-
-            // console.log(setGuess_state);
             return {
                 ...state,
                 isLoadingFlag: false,
                 error: "",
-                botSuggestion: action.payload.result.guess,
+                botSuggestion: action.payload.guess,
                 guessData: { ...setGuess_state },
             };
 
-
-            
         case WORDLEBOT_TYPES.SET_GUESS_INPUT:
             const setGuessInput_state = cloneDeep(state.guessData);
             setGuessInput_state.input = action.payload;
             return { ...state, guessData: { ...setGuessInput_state } };
 
         case WORDLEBOT_TYPES.SET_GUESS_OBJECT:
-            // console.log({state, payload: action.payload})
-            // is this is where we can put initial colors?
             const setGuessObject_state = cloneDeep(state.guessData);
             setGuessObject_state.input = "";
             setGuessObject_state.editFlag = false;

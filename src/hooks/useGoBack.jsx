@@ -7,8 +7,8 @@ const useGoBack = () => {
     const { dispatch } = useWordleBotContext();
 
     const goBack = () => {
-        dispatch({type: WORDLEBOT_TYPES.GO_BACK})
-    }
+        dispatch({ type: WORDLEBOT_TYPES.GO_BACK });
+    };
 
     return { goBack };
 };

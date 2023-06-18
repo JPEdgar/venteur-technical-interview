@@ -1,5 +1,5 @@
-import _ from "lodash"
+import _ from "lodash";
 
-const cloneDeep = (value) => _.cloneDeep(value)
+const cloneDeep = (value) => _.cloneDeep(value);
 
-export default cloneDeep
+export default cloneDeep;

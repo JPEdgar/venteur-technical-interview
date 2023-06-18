@@ -10,7 +10,7 @@ import {
     LockedLetterButton,
 } from "../../elements";
 import { useGoBack, useGuessData, useSendWord } from "../../../hooks";
-import { createId, prepareGuessForSuggestion, createSuggestionHistory } from "../../../utils";
+import { createId, prepareGuessForSuggestion } from "../../../utils";
 
 const EditCluesRow = ({ data, index }) => {
     const { goBack } = useGoBack();
@@ -23,10 +23,8 @@ const EditCluesRow = ({ data, index }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const historyList = createSuggestionHistory(guessData)
         const wordList = prepareGuessForSuggestion(guessData);
-        console.log(historyList)
-        sendWord({wordList, historyList}); // to be converted into an object: one for api (wordList), one for history (historyList) {wordList, historyList}
+        sendWord(wordList);
     };
 
     return (

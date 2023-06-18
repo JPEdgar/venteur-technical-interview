@@ -11,20 +11,13 @@ const WordleBotProvider = ({ children }) => {
     const [state, dispatch] = useReducer(wordleBotReducer, initialState);
 
     useEffect(() => {
-        // console.log(state);
-    }, [state]);
-
-    useEffect(() => {
         const Initialize = async () => {
             dispatch({ type: WORDLEBOT_TYPES.SEND_REQUEST });
             const word = await sendWord([]);
-            // console.log(word);
-            dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: {result: {word}} });
+            dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: word });
         };
 
-        // Initialize()
-
-        dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: { result: {guess: "testa"} } });
+        Initialize();
     }, []);
 
     return (

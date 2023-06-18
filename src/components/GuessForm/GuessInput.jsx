@@ -16,13 +16,18 @@ const GuessInput = () => {
     };
 
     const handleClick = () => {
-        setGuessInput("")
+        setGuessInput("");
     };
 
     return (
         <>
             <InputGroup>
-                <Button onClick={() => handleClick()} disabled={!guessData.editFlag || isLoadingFlag}>Clear</Button>
+                <Button
+                    onClick={() => handleClick()}
+                    disabled={!guessData.editFlag || isLoadingFlag}
+                >
+                    Clear
+                </Button>
                 <Form.Control
                     type="text"
                     onChange={handleChange}
