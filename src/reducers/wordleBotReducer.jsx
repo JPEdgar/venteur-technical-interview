@@ -38,6 +38,8 @@ const wordleBotReducer = (state = {}, action) => {
             return { ...state, guessData: { ...setGuessInput_state } };
 
         case WORDLEBOT_TYPES.SET_GUESS_OBJECT:
+            // console.log({state, payload: action.payload})
+            // is this is where we can put initial colors?
             const setGuessObject_state = cloneDeep(state.guessData);
             setGuessObject_state.input = "";
             setGuessObject_state.editFlag = false;

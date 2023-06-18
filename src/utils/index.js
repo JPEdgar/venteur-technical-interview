@@ -4,6 +4,7 @@ import checkIfString from "./checkIfString";
 import cloneDeep from "./cloneDeep";
 import createId from "./createId";
 import prepareGuessForSuggestion from "./prepareGuessForSuggestion";
+import createSuggestionHistory from "./createSuggestionHistory";
 
 export {
     createAttemptObject,
@@ -12,4 +13,5 @@ export {
     cloneDeep,
     createId,
     prepareGuessForSuggestion,
+    createSuggestionHistory,
 };

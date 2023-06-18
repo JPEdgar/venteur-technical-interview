@@ -9,6 +9,7 @@ const useSendWord = () => {
     const { dispatch } = useWordleBotContext();
 
     const sendWord = async (request) => {
+        // console.log("request = ", request)
         dispatch({ type: WORDLEBOT_TYPES.SEND_REQUEST });
         const result = await sendWordAction(request);
         if (result.name === "Error") {

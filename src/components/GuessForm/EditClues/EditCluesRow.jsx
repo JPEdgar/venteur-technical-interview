@@ -10,7 +10,7 @@ import {
     LockedLetterButton,
 } from "../../elements";
 import { useGoBack, useGuessData, useSendWord } from "../../../hooks";
-import { createId, prepareGuessForSuggestion } from "../../../utils";
+import { createId, prepareGuessForSuggestion, createSuggestionHistory } from "../../../utils";
 
 const EditCluesRow = ({ data, index }) => {
     const { goBack } = useGoBack();
@@ -23,7 +23,10 @@ const EditCluesRow = ({ data, index }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const returnArray = prepareGuessForSuggestion(guessData);
+        const preparedArray = prepareGuessForSuggestion(guessData);
+        const returnArray = createSuggestionHistory(preparedArray)
+        // console.log(returnArray)
+        // is this where we can alter/adjust the array for use?  maybe make an object {wordArray: [(the one to be sent to api)], colorList: {green, yellow, black}}
         sendWord(returnArray);
     };
 
