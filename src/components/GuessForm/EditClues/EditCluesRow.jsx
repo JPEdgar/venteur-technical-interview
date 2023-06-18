@@ -23,11 +23,10 @@ const EditCluesRow = ({ data, index }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const preparedArray = prepareGuessForSuggestion(guessData);
-        const returnArray = createSuggestionHistory(preparedArray)
-        // console.log(returnArray)
-        // is this where we can alter/adjust the array for use?  maybe make an object {wordArray: [(the one to be sent to api)], colorList: {green, yellow, black}}
-        sendWord(returnArray);
+        const historyList = createSuggestionHistory(guessData)
+        const wordList = prepareGuessForSuggestion(guessData);
+        console.log(historyList)
+        sendWord(wordList); // to be converted into an object: one for api (wordList), one for history (historyList) {wordList, historyList}
     };
 
     return (
