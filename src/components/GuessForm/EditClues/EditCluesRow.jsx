@@ -26,7 +26,7 @@ const EditCluesRow = ({ data, index }) => {
         const historyList = createSuggestionHistory(guessData)
         const wordList = prepareGuessForSuggestion(guessData);
         console.log(historyList)
-        sendWord(wordList); // to be converted into an object: one for api (wordList), one for history (historyList) {wordList, historyList}
+        sendWord({wordList, historyList}); // to be converted into an object: one for api (wordList), one for history (historyList) {wordList, historyList}
     };
 
     return (

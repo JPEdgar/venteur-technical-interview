@@ -27,10 +27,18 @@ const wordleBotReducer = (state = {}, action) => {
         case WORDLEBOT_TYPES.SET_ERROR:
             return { ...state, isLoadingFlag: false, error: action.payload.message };
 
+
+
+        // takes {request: {wordList, historyList}, result: {guess}}
         case WORDLEBOT_TYPES.SET_BOT_SUGGESTION:
             const setGuess_state = cloneDeep(state.guessData);
             setGuess_state.editFlag = true;
-            return { ...state, isLoadingFlag: false, error: "", botSuggestion: action.payload.guess, guessData: { ...setGuess_state } };
+            console.log(action.payload) // {wordList, historyList}
+            // return state
+            return { ...state, isLoadingFlag: false, error: "", botSuggestion: action.payload.result.guess, guessData: { ...setGuess_state } };
+
+
+
 
         case WORDLEBOT_TYPES.SET_GUESS_INPUT:
             const setGuessInput_state = cloneDeep(state.guessData);

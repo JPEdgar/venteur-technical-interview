@@ -19,12 +19,12 @@ const WordleBotProvider = ({ children }) => {
             dispatch({ type: WORDLEBOT_TYPES.SEND_REQUEST });
             const word = await sendWord([]);
             // console.log(word);
-            dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: word });
+            dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: {result: {word}} });
         };
 
         // Initialize()
 
-        dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: { guess: "testa" } });
+        dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: { result: {guess: "testa"} } });
     }, []);
 
     return (
