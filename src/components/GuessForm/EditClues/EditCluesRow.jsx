@@ -14,7 +14,6 @@ import { createId, prepareGuessForSuggestion } from "../../../utils";
 
 const EditCluesRow = ({ data, index }) => {
     const { goBack } = useGoBack();
-
     const { guessData } = useGuessData();
     const { sendWord } = useSendWord();
 
@@ -28,6 +27,9 @@ const EditCluesRow = ({ data, index }) => {
         sendWord(returnArray);
     };
 
+    React.useEffect(() => {
+        console.log(guessData)
+    }, [guessData])
     return (
         <>
             <Stack direction="horizontal" gap={2}>

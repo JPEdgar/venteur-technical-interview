@@ -2,13 +2,20 @@ import WORDLEBOT_TYPES from "../constants/types/wordleBotTypes";
 
 import { cloneDeep } from "../utils";
 
-// STATE
+// STATE -- taken from initialState.js
 // {
-//     guessList: [], // [{word: string, clue: string}]
+//     guessList: [], // an array specifically formatted for the api: [{word: string, clue: string}]
 //     isLoadingFlag: false,
 //     error: "",
 //     botSuggestion: "",
-//     guessData: { editFlag: true, input: "", attemptList: [] },
+//     guessData: {
+//         editFlag: true,
+//         input: "",
+//         attemptList: [], // an array of objects:  [{letter: string, code: string, edit: bool}]
+//         greenList: [], // an array of objects with the "g" code:  [{index: int, letter: string}]
+//         yellowList: [], // an array of objects with the "y" code:  [{index: int, letter: string}]
+//         blackList: "",  // a string of letters with the "x" code
+//     },
 // };
 
 const wordleBotReducer = (state = {}, action) => {
@@ -20,10 +27,10 @@ const wordleBotReducer = (state = {}, action) => {
         case WORDLEBOT_TYPES.SET_ERROR:
             return { ...state, isLoadingFlag: false, error: action.payload.message };
 
-        case WORDLEBOT_TYPES.SET_GUESS:
+        case WORDLEBOT_TYPES.SET_BOT_SUGGESTION:
             const setGuess_state = cloneDeep(state.guessData);
             setGuess_state.editFlag = true;
-            return { ...state, isLoadingFlag: false, error: "", botSuggestion: action.payload.guess, guessData: { ...setGuess_state }, };
+            return { ...state, isLoadingFlag: false, error: "", botSuggestion: action.payload.guess, guessData: { ...setGuess_state } };
 
         case WORDLEBOT_TYPES.SET_GUESS_INPUT:
             const setGuessInput_state = cloneDeep(state.guessData);

@@ -14,7 +14,7 @@ const useSendWord = () => {
         if (result.name === "Error") {
             dispatch({ type: WORDLEBOT_TYPES.SET_ERROR, payload: result });
         } else {
-            dispatch({ type: WORDLEBOT_TYPES.SET_GUESS, payload: result });
+            dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: result });
             console.log(result);
         }
     };
