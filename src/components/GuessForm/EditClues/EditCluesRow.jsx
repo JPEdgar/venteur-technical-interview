@@ -27,9 +27,6 @@ const EditCluesRow = ({ data, index }) => {
         sendWord(returnArray);
     };
 
-    React.useEffect(() => {
-        console.log(guessData)
-    }, [guessData])
     return (
         <>
             <Stack direction="horizontal" gap={2}>
