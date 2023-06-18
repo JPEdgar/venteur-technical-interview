@@ -33,11 +33,9 @@ const wordleBotReducer = (state = {}, action) => {
         case WORDLEBOT_TYPES.SET_BOT_SUGGESTION:
             const setGuess_state = cloneDeep(state.guessData);
             setGuess_state.editFlag = true;
-            setGuess_state.greenList= action.payload.request?.historyList.greenList
-            setGuess_state.yellowList= action.payload.request?.historyList.yellowList
-            setGuess_state.blackList=  action.payload.request?.historyList.blackList
-            // console.log(action.payload) // {wordList, historyList}
-            // return state
+            if (action.payload.request?.historyList?.greenList) setGuess_state.greenList= action.payload.request.historyList.greenList
+            if (action.payload.request?.historyList?.yellowList) setGuess_state.yellowList= action.payload.request.historyList.yellowList
+            if (action.payload.request?.historyList?.blackList) setGuess_state.blackList=  action.payload.request.historyList.blackList
             return { ...state, isLoadingFlag: false, error: "", botSuggestion: action.payload.result.guess, guessData: { ...setGuess_state } };
 
 
