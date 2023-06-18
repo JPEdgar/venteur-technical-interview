@@ -22,7 +22,7 @@ const GuessInput = () => {
     return (
         <>
             <InputGroup>
-                <Button onClick={() => handleClick()} disabled={isLoadingFlag}>Clear</Button>
+                <Button onClick={() => handleClick()} disabled={!guessData.editFlag || isLoadingFlag}>Clear</Button>
                 <Form.Control
                     type="text"
                     onChange={handleChange}
