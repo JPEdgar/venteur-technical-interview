@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form } from "react-bootstrap";
+import { Form, InputGroup, Button } from "react-bootstrap";
 
 import { useLoadingFlag, useGuessData, useErrorMessage } from "../../hooks";
 import { checkIfString } from "../../utils";
@@ -15,18 +15,24 @@ const GuessInput = () => {
         else setErrorMessage("Only letters are allowed (A-Z)");
     };
 
+    const handleClick = () => {
+        setGuessInput("")
+    };
+
     return (
         <>
-            <Form onSubmit={null}>
+            <InputGroup>
+                <Button onClick={() => handleClick()} disabled={isLoadingFlag}>Clear</Button>
                 <Form.Control
                     type="text"
                     onChange={handleChange}
                     maxLength={5}
                     value={guessData.input}
                     disabled={isLoadingFlag || !guessData.editFlag}
+                    placeholder="Enter your guess..."
                 />
-            </Form>
-            <p>{errorMessage}</p>
+            </InputGroup>
+            <p style={{ color: "red" }}>{errorMessage}</p>
         </>
     );
 };
