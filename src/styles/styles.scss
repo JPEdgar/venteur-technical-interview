@@ -1,6 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Genos&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Genos&display=swap"); // header
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap"); // main/body
 
 $bot-blue: #1fbcf0;
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
 .bot-header {
     font-size: 4rem;
@@ -14,12 +21,46 @@ $bot-blue: #1fbcf0;
     color: $bot-blue;
 }
 
-.test1 {
-    background-color: pink;
+.guess-card {
+    border-color: $bot-blue;
+    background-color: $bot-blue;
 }
-.test2 {
-    background-color: orange;
+
+.edit-row {
+    line-height: 0;
 }
-.test3 {
-    background-color: purple;
+
+.color-button-group {
+    height: 20px;
 }
+
+// .test0 {
+//     background-color: purple;
+//     min-height: 20px;
+// }
+
+// .test0-5 {
+//     background-color: lavender;
+//     min-height: 20px;
+// }
+
+// .test1 {
+//     background-color: red;
+//     min-height: 20px;
+// }
+
+// .test1-5 {
+//     background-color: pink;
+//     min-height: 20px;
+// }
+
+
+// .test2 {
+//     background-color: green;
+//     min-height: 20px;
+// }
+
+// .test3 {
+//     background-color: blue;
+//     min-height: 20px;
+// }

@@ -8,10 +8,10 @@ const SubmitButton = ({ handleSubmit }) => {
     const { guessData } = useGuessData();
     const { isLoadingFlag } = useLoadingFlag();
     return (
-        <div className="w-100 ms-4">
+        <div className="d-flex w-100">
             <Button
                 onClick={handleSubmit}
-                className="w-100 "
+                className="w-100"
                 disabled={guessData.editFlag || isLoadingFlag}
             >
                 Submit

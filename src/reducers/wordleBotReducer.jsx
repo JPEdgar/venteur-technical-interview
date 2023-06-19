@@ -25,7 +25,6 @@ const wordleBotReducer = (state = {}, action) => {
             return { ...state, isLoadingFlag: false, error: action.payload.message };
 
         case WORDLEBOT_TYPES.SET_BOT_SUGGESTION:
-            console.log(action.payload)
             const setGuess_state = cloneDeep(state.guessData);
             setGuess_state.editFlag = true;
             return {
