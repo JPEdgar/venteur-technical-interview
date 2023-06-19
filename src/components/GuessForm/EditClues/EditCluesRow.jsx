@@ -3,11 +3,14 @@ import React from "react";
 import { Col, Card, Container } from "react-bootstrap";
 
 import ClueRows from "./ClueRows";
+import { BackButton, SubmitButton } from "../../elements";
 import {
-    BackButton, 
-    SubmitButton, 
-} from "../../elements";
-import { useGoBack, useGuessData, useSendWord, useGameStatus } from "../../../hooks";
+    useGoBack,
+    useGuessData,
+    useSendWord,
+    useGameStatus,
+    useErrorMessage,
+} from "../../../hooks";
 import { prepareGuessForSuggestion } from "../../../utils";
 
 const EditCluesRow = ({ data, index }) => {
@@ -15,6 +18,7 @@ const EditCluesRow = ({ data, index }) => {
     const { guessData } = useGuessData();
     const { sendWord } = useSendWord();
     const { victory } = useGameStatus();
+    const { setErrorMessage } = useErrorMessage();
 
     const handleBack = () => {
         goBack();
@@ -27,6 +31,10 @@ const EditCluesRow = ({ data, index }) => {
 
         if (wordList[listLength].clue === "ggggg") {
             victory();
+        } else if (guessData.attemptList.length > 5) {
+            setErrorMessage(
+                "Unable to get another suggestions.  There are too many guesses on the board."
+            );
         } else sendWord(wordList);
     };
 
