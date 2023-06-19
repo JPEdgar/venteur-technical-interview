@@ -11,6 +11,7 @@ const WORDLEBOT_TYPES = {
     BLUR_FROM_CLUE: "blur-from-clue",
     GAME_VICTORY: "game-victory",
     RESET_GAME: "reset-game",
+    RETURN_TO_GAME: "return-to-game",
 };
 
 export default WORDLEBOT_TYPES;

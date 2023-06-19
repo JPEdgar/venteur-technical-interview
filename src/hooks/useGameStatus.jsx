@@ -13,19 +13,19 @@ const useGameStatus = () => {
     };
 
     const goBack = () => {
-        //
+        dispatch({ type: WORDLEBOT_TYPES.RETURN_TO_GAME });
     };
 
     const resetGame = async () => {
         dispatch({ type: WORDLEBOT_TYPES.RESET_GAME });
         const word = await sendWord([]);
-        console.log(word)
+        console.log(word);
         dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: word });
     };
 
     const gameStatus = state.gameCleared;
 
-    return { victory, gameStatus, resetGame };
+    return { victory, gameStatus, resetGame, goBack };
 };
 
 export default useGameStatus;

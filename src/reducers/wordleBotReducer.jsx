@@ -114,6 +114,12 @@ const wordleBotReducer = (state = {}, action) => {
                 botSuggestion: "",
             };
 
+        case WORDLEBOT_TYPES.RETURN_TO_GAME:
+            const returnToGame_state = cloneDeep(state.gameCleared);
+            returnToGame_state.gameClearedFlag = false;
+            returnToGame_state.gameVictoryFlag = false;
+            return { ...state, gameCleared: { ...returnToGame_state } };
+
         default:
             return state;
     }
