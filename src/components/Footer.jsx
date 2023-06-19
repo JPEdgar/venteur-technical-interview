@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 
 const Footer = () => {
     return (
-        <Row className="footer w-100 align-items-center m-0 p-0">
+        <Row className="footer w-100 align-items-center m-0 p-0 fixed-bottom ">
             <Col xs={12} md={7} className="d-flex flex-column justify-content-flex-end">
                 <div>Front end developed by:</div>
                 <div className="footer-name">Jon Edgar (Jon.P.Edgar@gmail.com)</div>
