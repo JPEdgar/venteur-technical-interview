@@ -12,8 +12,8 @@ const GuessForm = () => {
         <>
             <EditClues />
             <Stack direction="horizontal">
-                <Image src={botImage} height="100px" />
-                <div  className="w-100">
+                <Image src={botImage} height="100px" className="d-none d-sm-block" />
+                <div className="w-100">
                     <Bot />
                     <GuessInput />
                 </div>
