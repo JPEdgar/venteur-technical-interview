@@ -10,7 +10,7 @@ const BotSuggestion = () => {
     return isLoadingFlag ? (
         <Spinner />
     ) : (
-        <div className="d-flex test2 p-2 suggestion-bubble gap-2">
+        <div className="d-flex p-2 suggestion-bubble gap-2">
             I suggest <Suggestion />
         </div>
     );

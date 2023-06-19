@@ -34,7 +34,7 @@
   border-radius: 10px 10px 10px 0;
   border-style: solid;
   border-color: #1fbcf0;
-  width: 50%;
+  width: 100%;
 }
 
 .btn-suggest {
@@ -45,6 +45,32 @@
   color: red;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  min-height: 50px;
+  background-color: #91daf3;
+  font-size: 0.8rem;
+}
+
+.footer-name {
+  font-style: italic;
+}
+
+.btn-suggestion-autofill {
+  font-size: 0.5rem;
+}
+
+@media (min-width: 400px) {
+  .suggestion-bubble {
+    width: 75%;
+  }
+
+  .footer-name {
+    padding-left: 1rem;
+  }
+}
 @media (min-width: 576px) {
   .suggestion-bubble {
     width: 50%;
@@ -53,6 +79,10 @@
 @media (min-width: 768px) {
   .suggestion-bubble {
     width: 30%;
+  }
+
+  .footer-name {
+    padding-left: 0;
   }
 }
 @media (min-width: 992px) {

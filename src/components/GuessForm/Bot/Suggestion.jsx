@@ -23,9 +23,7 @@ const Suggestion = () => {
             >
                 <div>{suggestedWord}</div>
             </Button>
-            <div style={{ fontSize: "0.5rem" }} className="test1 text-center">
-                Click to auto-fill
-            </div>
+            <div className="text-center btn-suggestion-autofill">Click to auto-fill</div>
         </div>
     );
 };

@@ -39,7 +39,7 @@ $bot-light-blue: #91daf3;
     border-radius: 10px 10px 10px 0;
     border-style: solid;
     border-color: $bot-blue;
-    width: 50%;
+    width: 100%;
 }
 
 .btn-suggest {
@@ -48,6 +48,34 @@ $bot-light-blue: #91daf3;
 
 .error-text {
     color: red;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-height: 50px;
+    background-color: $bot-light-blue;
+    font-size: 0.8rem;
+}
+
+.footer-name {
+    font-style: italic;
+}
+
+.btn-suggestion-autofill {
+    font-size: 0.5rem;
+}
+
+// Super small devices (400-576px)
+@media (min-width: 400px) {
+    .suggestion-bubble {
+        width: 75%;
+    }
+
+    .footer-name {
+        padding-left: 1rem;
+    }
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -61,6 +89,10 @@ $bot-light-blue: #91daf3;
 @media (min-width: 768px) {
     .suggestion-bubble {
         width: 30%;
+    }
+
+    .footer-name {
+        padding-left: 0;
     }
 }
 
