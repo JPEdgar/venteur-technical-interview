@@ -18,9 +18,8 @@
   color: #1fbcf0;
 }
 
-.guess-card {
-  border-color: #1fbcf0;
-  background-color: #1fbcf0;
+.btn-locked {
+  min-width: 35px;
 }
 
 .edit-row {
@@ -29,4 +28,45 @@
 
 .color-button-group {
   height: 20px;
+}
+
+.suggestion-bubble {
+  border-radius: 10px 10px 10px 0;
+  border-style: solid;
+  border-color: #1fbcf0;
+  width: 50%;
+}
+
+.btn-suggest {
+  color: #0c4d63 !important;
+}
+
+.error-text {
+  color: red;
+}
+
+@media (min-width: 576px) {
+  .suggestion-bubble {
+    width: 50%;
+  }
+}
+@media (min-width: 768px) {
+  .suggestion-bubble {
+    width: 30%;
+  }
+}
+@media (min-width: 992px) {
+  .suggestion-bubble {
+    width: 25%;
+  }
+}
+@media (min-width: 1200px) {
+  .suggestion-bubble {
+    width: 20%;
+  }
+}
+@media (min-width: 1400px) {
+  .suggestion-bubble {
+    width: 20%;
+  }
 }

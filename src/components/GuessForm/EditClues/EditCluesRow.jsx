@@ -27,7 +27,7 @@ const EditCluesRow = ({ data, index }) => {
 
     return (
         <>
-            <Card className="p-1 pb-2 my-1 guess-card">
+            <Card className="p-1 pb-2 my-1">
                 <Container>
                     <div className="d-block d-md-flex w-100 justify-content-center">
                         {guessData.attemptList.length === index + 1 ? (

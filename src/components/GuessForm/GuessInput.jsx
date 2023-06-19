@@ -21,7 +21,7 @@ const GuessInput = () => {
 
     return (
         <>
-            <InputGroup>
+            <InputGroup className="mt-1">
                 <Button
                     onClick={() => handleClick()}
                     disabled={!guessData.editFlag || isLoadingFlag}
@@ -37,7 +37,7 @@ const GuessInput = () => {
                     placeholder="Enter your guess..."
                 />
             </InputGroup>
-            <p>{errorMessage}</p>
+            <p className="error-text">{errorMessage}</p>
         </>
     );
 };

@@ -14,15 +14,19 @@ const Suggestion = () => {
     };
 
     return (
-        <Button
-            onClick={() => handleClick()}
-            variant="info"
-            className="text-uppercase"
-            disabled={!guessData.editFlag || isLoadingFlag}
-        >
-            <div>{suggestedWord}</div>
-            <div>Click to auto-fill</div>
-        </Button>
+        <div className="">
+            <Button
+                onClick={() => handleClick()}
+                variant="outline-info"
+                className="text-uppercase btn-suggest"
+                disabled={!guessData.editFlag || isLoadingFlag}
+            >
+                <div>{suggestedWord}</div>
+            </Button>
+            <div style={{ fontSize: "0.5rem" }} className="test1 text-center">
+                Click to auto-fill
+            </div>
+        </div>
     );
 };
 

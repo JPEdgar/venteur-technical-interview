@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Genos&display=swap"); // header
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap"); // main/body
 
+$bot-dark-blue: #0c4d63;
 $bot-blue: #1fbcf0;
+$bot-light-blue: #91daf3;
 
 * {
     font-family: "Poppins", sans-serif;
@@ -21,9 +23,8 @@ $bot-blue: #1fbcf0;
     color: $bot-blue;
 }
 
-.guess-card {
-    border-color: $bot-blue;
-    background-color: $bot-blue;
+.btn-locked {
+    min-width: 35px;
 }
 
 .edit-row {
@@ -32,4 +33,54 @@ $bot-blue: #1fbcf0;
 
 .color-button-group {
     height: 20px;
+}
+
+.suggestion-bubble {
+    border-radius: 10px 10px 10px 0;
+    border-style: solid;
+    border-color: $bot-blue;
+    width: 50%;
+}
+
+.btn-suggest {
+    color: $bot-dark-blue !important;
+}
+
+.error-text {
+    color: red;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .suggestion-bubble {
+        width: 50%;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .suggestion-bubble {
+        width: 30%;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .suggestion-bubble {
+        width: 25%;
+    }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .suggestion-bubble {
+        width: 20%;
+    }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+    .suggestion-bubble {
+        width: 20%;
+    }
 }

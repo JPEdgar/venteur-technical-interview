@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 const LockedLetterButton = ({ letterObject }) => {
     return (
         <Button
-            className="w-100"
+            className="w-100 text-center btn-locked"
             variant={
                 letterObject.code === "x"
                     ? "secondary"
