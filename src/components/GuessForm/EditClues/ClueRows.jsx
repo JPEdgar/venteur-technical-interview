@@ -3,8 +3,8 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 
 import {
-    LetterButton, // handleClick , handleToggle, letterObject, attemptListIndex, letterObjectIndex
-    EditLetterInput, // handleSubmit, handleBlur, handleEdit, handleFocus, letterObj, attemptListIndex, letterObjectIndex,
+    LetterButton, 
+    EditLetterInput, 
     LockedLetterButton,
 } from "../../elements";
 import { useGuessData } from "../../../hooks";

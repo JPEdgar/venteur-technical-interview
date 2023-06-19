@@ -14,7 +14,6 @@ const WordleBotProvider = ({ children }) => {
         const Initialize = async () => {
             dispatch({ type: WORDLEBOT_TYPES.SEND_REQUEST });
             const word = await sendWord([]);
-            console.log(word)
             dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: word });
         };
 

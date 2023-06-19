@@ -19,7 +19,6 @@ const useGameStatus = () => {
     const resetGame = async () => {
         dispatch({ type: WORDLEBOT_TYPES.RESET_GAME });
         const word = await sendWord([]);
-        console.log(word);
         dispatch({ type: WORDLEBOT_TYPES.SET_BOT_SUGGESTION, payload: word });
     };
 

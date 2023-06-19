@@ -34,7 +34,13 @@ const GuessInput = () => {
                     maxLength={5}
                     value={guessData.input}
                     disabled={isLoadingFlag || !guessData.editFlag}
-                    placeholder="Enter your guess..."
+                    placeholder={
+                        isLoadingFlag
+                            ? "Please wait..."
+                            : !guessData.editFlag
+                            ? "Please refer to the section above..."
+                            : "Enter your guess..."
+                    }
                 />
             </InputGroup>
             <p className="error-text">{errorMessage}</p>

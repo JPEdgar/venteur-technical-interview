@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Row, Col, Card, Container } from "react-bootstrap";
+import { Col, Card, Container } from "react-bootstrap";
 
 import ClueRows from "./ClueRows";
 import {
-    BackButton, // handleBack
-    SubmitButton, // handleSubmit
+    BackButton, 
+    SubmitButton, 
 } from "../../elements";
 import { useGoBack, useGuessData, useSendWord, useGameStatus } from "../../../hooks";
 import { prepareGuessForSuggestion } from "../../../utils";

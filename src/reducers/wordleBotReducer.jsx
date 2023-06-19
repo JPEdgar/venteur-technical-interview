@@ -5,14 +5,14 @@ import initialState from "../constants/initializations/initialState";
 
 // STATE -- taken from initialState.js
 // {
-//     guessList: [], // an array specifically formatted for the api: [{word: string, clue: string}]
+//     guessList: [],
 //     isLoadingFlag: false,
 //     error: "",
 //     botSuggestion: "",
 //     guessData: {
 //         editFlag: true,
 //         input: "",
-//         attemptList: [], // an array of objects:  [{letter: string, code: string, edit: bool}]
+//         attemptList: [],
 //     },
 //     gameCleared: {
 //         gameClearedFlag: false,

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SplitButton, Button, ButtonGroup, Row, Container } from "react-bootstrap";
+import { SplitButton, Button, ButtonGroup, Container } from "react-bootstrap";
 
 import { useToggleClue, useEditClue } from "../../hooks";
 
