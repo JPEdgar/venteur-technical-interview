@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap";
 import Header from "./components/Header";
 import GuessForm from "./components/GuessForm";
 import Footer from "./components/Footer";
+import GameEndModal from "./components/GameEndModal";
 
 // https://brandeps.com/logo-download/W/Wordle-logo-vector-01.svg
 // <i class="fa-solid fa-robot"></i>
@@ -18,6 +19,7 @@ const App = () => {
             <div className="d-none d-lg-block d-xl-none">lg</div>
             <div className="d-none d-xl-block">xl</div>
             <Container className="mt-1">
+                <GameEndModal />
                 <Header />
                 <GuessForm />
                 <Footer />

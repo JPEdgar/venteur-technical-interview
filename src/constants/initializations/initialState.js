@@ -8,6 +8,10 @@ const initialState = {
         input: "",
         attemptList: [], // an array of objects:  [{letter: string, code: string, edit: bool}]
     },
+    gameCleared: {
+        gameClearedFlag: false,
+        gameVictoryFlag: false,
+    },
 };
 
 export default initialState;

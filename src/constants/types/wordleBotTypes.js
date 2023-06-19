@@ -9,6 +9,8 @@ const WORDLEBOT_TYPES = {
     EDIT_CLUE: "edit-clue",
     EDIT_CLUE_LETTER: "edit-clue-letter",
     BLUR_FROM_CLUE: "blur-from-clue",
+    GAME_VICTORY: "game-victory",
+    RESET_GAME: "reset-game",
 };
 
 export default WORDLEBOT_TYPES;

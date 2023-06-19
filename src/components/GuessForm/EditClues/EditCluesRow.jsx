@@ -7,13 +7,14 @@ import {
     BackButton, // handleBack
     SubmitButton, // handleSubmit
 } from "../../elements";
-import { useGoBack, useGuessData, useSendWord } from "../../../hooks";
+import { useGoBack, useGuessData, useSendWord, useGameStatus } from "../../../hooks";
 import { prepareGuessForSuggestion } from "../../../utils";
 
 const EditCluesRow = ({ data, index }) => {
     const { goBack } = useGoBack();
     const { guessData } = useGuessData();
     const { sendWord } = useSendWord();
+    const { victory } = useGameStatus();
 
     const handleBack = () => {
         goBack();
@@ -22,7 +23,11 @@ const EditCluesRow = ({ data, index }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const wordList = prepareGuessForSuggestion(guessData);
-        sendWord(wordList);
+        const listLength = wordList.length - 1;
+
+        if (wordList[listLength].clue === "ggggg") {
+            victory();
+        } else sendWord(wordList);
     };
 
     return (

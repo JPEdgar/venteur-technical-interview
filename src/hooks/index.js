@@ -6,6 +6,7 @@ import useGuessData from "./useGuessData";
 import useGoBack from "./useGoBack";
 import useToggleClue from "./useToggleClue";
 import useEditClue from "./useEditClue";
+import useGameStatus from "./useGameStatus";
 
 export {
     useSendWord,
@@ -16,4 +17,5 @@ export {
     useGoBack,
     useToggleClue,
     useEditClue,
+    useGameStatus,
 };

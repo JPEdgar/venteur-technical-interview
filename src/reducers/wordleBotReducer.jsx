@@ -1,6 +1,7 @@
 import WORDLEBOT_TYPES from "../constants/types/wordleBotTypes";
 
 import { cloneDeep } from "../utils";
+import initialState from "../constants/initializations/initialState";
 
 // STATE -- taken from initialState.js
 // {
@@ -12,6 +13,10 @@ import { cloneDeep } from "../utils";
 //         editFlag: true,
 //         input: "",
 //         attemptList: [], // an array of objects:  [{letter: string, code: string, edit: bool}]
+//     },
+//     gameCleared: {
+//         gameClearedFlag: false,
+//         gameVictoryFlag: false,
 //     },
 // };
 
@@ -92,6 +97,22 @@ const wordleBotReducer = (state = {}, action) => {
             ].edit = false;
             blurFromClue_state.editFlag = false;
             return { ...state, guessData: { ...blurFromClue_state } };
+
+        case WORDLEBOT_TYPES.GAME_VICTORY:
+            const gameVictory_state = cloneDeep(state.gameCleared);
+            gameVictory_state.gameClearedFlag = true;
+            gameVictory_state.gameVictoryFlag = true;
+            return { ...state, gameCleared: { ...gameVictory_state } };
+
+        case WORDLEBOT_TYPES.RESET_GAME:
+            const resetGame_state = cloneDeep(state.guessData);
+            resetGame_state.editFlag = true;
+            return {
+                ...initialState,
+                isLoadingFlag: true,
+                error: "",
+                botSuggestion: "",
+            };
 
         default:
             return state;
