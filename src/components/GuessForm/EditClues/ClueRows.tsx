@@ -2,22 +2,28 @@ import React from "react";
 
 import { Row, Col, Container } from "react-bootstrap";
 
-import {
-    LetterButton, 
-    EditLetterInput, 
-    LockedLetterButton,
-} from "../../elements";
+import { LetterButton, EditLetterInput, LockedLetterButton } from "../../elements";
 import { useGuessData } from "../../../hooks";
 import { createId } from "../../../utils";
 
-const ClueRows = ({ data, index }) => {
+console.log("get data here");
+type ClueRowsProps = {
+    data: [];
+    index: number;
+};
+
+type LetterData = {
+    edit: boolean
+}
+
+const ClueRows = ({ data, index }: ClueRowsProps) => {
     const { guessData } = useGuessData();
     return (
         <>
             <Container>
                 <Row className="justify-content-evenly">
                     <Col sm={1} />
-                    {data.map((letterData, letterIndex) =>
+                    {data.map((letterData: LetterData, letterIndex: number) =>
                         letterData.edit ? (
                             <Col key={createId()} xs={2}>
                                 <EditLetterInput

@@ -4,15 +4,23 @@ import { SplitButton, Button, ButtonGroup, Container } from "react-bootstrap";
 
 import { useToggleClue, useEditClue } from "../../hooks";
 
-const LetterButton = ({ letterObject, attemptListIndex, letterObjectIndex }) => {
+console.log("get data here");
+
+type LetterButtonProps = {
+    letterObject: any;
+    attemptListIndex: number;
+    letterObjectIndex: number;
+};
+
+const LetterButton = ({ letterObject, attemptListIndex, letterObjectIndex }: LetterButtonProps) => {
     const { toggleClue } = useToggleClue();
     const { editClue } = useEditClue();
 
-    const handleClick = (attemptIndex, letterIndex, override) => {
+    const handleClick = (attemptIndex: number, letterIndex: number, override?: any) => {
         toggleClue(attemptIndex, letterIndex, override);
     };
 
-    const handleToggle = (attemptListIndex, letterObjectIndex) => {
+    const handleToggle = (attemptListIndex: number, letterObjectIndex: number) => {
         editClue(attemptListIndex, letterObjectIndex);
     };
 
@@ -31,6 +39,7 @@ const LetterButton = ({ letterObject, attemptListIndex, letterObjectIndex }) => 
                 title={letterObject.letter.toUpperCase()}
                 show={false}
                 onToggle={() => handleToggle(attemptListIndex, letterObjectIndex)}
+                children={null}
             />
 
             <ButtonGroup className="d-none d-sm-flex w-100">

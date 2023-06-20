@@ -8,9 +8,9 @@ import useWordleBotContext from "./context/useWordleBotContext";
 const useSendWord = () => {
     const { dispatch } = useWordleBotContext();
 
-    const sendWord = async (wordList) => {
+    const sendWord = async (wordList: any[]) => {
         dispatch({ type: WORDLEBOT_TYPES.SEND_REQUEST });
-        const result = await sendWordAction(wordList);
+        const result: any = await sendWordAction(wordList);
         if (result.name === "Error") {
             dispatch({ type: WORDLEBOT_TYPES.SET_ERROR, payload: result });
         } else {

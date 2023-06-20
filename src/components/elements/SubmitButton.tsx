@@ -4,7 +4,12 @@ import { Button } from "react-bootstrap";
 
 import { useGuessData, useLoadingFlag } from "../../hooks";
 
-const SubmitButton = ({ handleSubmit }) => {
+console.log("get data here")
+type SubmitButtonProps = {
+    handleSubmit: any;
+};
+
+const SubmitButton = ({ handleSubmit }: SubmitButtonProps) => {
     const { guessData } = useGuessData();
     const { isLoadingFlag } = useLoadingFlag();
     return (

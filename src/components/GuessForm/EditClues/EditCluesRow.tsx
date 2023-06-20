@@ -13,7 +13,13 @@ import {
 } from "../../../hooks";
 import { prepareGuessForSuggestion } from "../../../utils";
 
-const EditCluesRow = ({ data, index }) => {
+console.log("get data here");
+type EditCluesRowProps = {
+    data: [];
+    index: number;
+};
+
+const EditCluesRow = ({ data, index }: EditCluesRowProps) => {
     const { goBack } = useGoBack();
     const { guessData } = useGuessData();
     const { sendWord } = useSendWord();
@@ -24,7 +30,7 @@ const EditCluesRow = ({ data, index }) => {
         goBack();
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
         const wordList = prepareGuessForSuggestion(guessData);
         const listLength = wordList.length - 1;

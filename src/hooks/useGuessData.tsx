@@ -10,7 +10,7 @@ const useGuessData = () => {
 
     const guessData = state.guessData;
 
-    const setGuessInput = (data) => {
+    const setGuessInput = (data: any) => {
         if (data.length < 5) dispatch({ type: WORDLEBOT_TYPES.SET_GUESS_INPUT, payload: data });
         else {
             const attemptObject = createAttemptObject(data);

@@ -20,7 +20,10 @@ import initialState from "../constants/initializations/initialState";
 //     },
 // };
 
-const wordleBotReducer = (state = {}, action) => {
+console.log("get data here");
+type ReducerType = { type: string; payload?: any };
+
+const wordleBotReducer = (state = initialState, action: ReducerType) => {
     // console.log("in wordleBotReducer > {state, action} = ", { state, action });
     switch (action.type) {
         case WORDLEBOT_TYPES.SEND_REQUEST:
@@ -73,9 +76,8 @@ const wordleBotReducer = (state = {}, action) => {
         case WORDLEBOT_TYPES.EDIT_CLUE:
             const editClue_state = cloneDeep(state.guessData);
             const editClue_attemptList = editClue_state.attemptList;
-            editClue_attemptList[action.payload.attemptIndex][
-                action.payload.letterIndex
-            ].edit = true;
+            editClue_attemptList[action.payload.attemptIndex][action.payload.letterIndex].edit =
+                true;
             editClue_state.editFlag = false;
             return { ...state, guessData: { ...editClue_state } };
 

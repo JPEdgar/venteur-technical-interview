@@ -8,7 +8,7 @@ const useErrorMessage = () => {
 
     const errorMessage = state.error;
 
-    const setErrorMessage = (message) => {
+    const setErrorMessage = (message: string) => {
         dispatch({ type: WORDLEBOT_TYPES.SET_ERROR, payload: { message } });
     };
 

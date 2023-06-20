@@ -5,12 +5,14 @@ import { Form, InputGroup, Button } from "react-bootstrap";
 import { useLoadingFlag, useGuessData, useErrorMessage } from "../../hooks";
 import { checkIfString } from "../../utils";
 
+console.log("get data here") 
+
 const GuessInput = () => {
     const { isLoadingFlag } = useLoadingFlag();
     const { guessData, setGuessInput } = useGuessData();
     const { errorMessage, setErrorMessage } = useErrorMessage();
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         if (checkIfString(e.target.value)) setGuessInput(e.target.value);
         else setErrorMessage("Only letters are allowed (A-Z)");
     };

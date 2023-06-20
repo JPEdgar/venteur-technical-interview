@@ -2,7 +2,12 @@ import React from "react";
 
 import { Button } from "react-bootstrap";
 
-const LockedLetterButton = ({ letterObject }) => {
+console.log("get data here");
+type LockedLetterButtonProps = {
+    letterObject: any;
+};
+
+const LockedLetterButton = ({ letterObject }: LockedLetterButtonProps) => {
     return (
         <Button
             className="w-100 text-center btn-locked"

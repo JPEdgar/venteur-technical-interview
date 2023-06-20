@@ -5,23 +5,34 @@ import { Form } from "react-bootstrap";
 import { useEditClue } from "../../hooks";
 import { checkIfString } from "../../utils";
 
-const EditLetterInput = ({ letterObj, attemptListIndex, letterObjectIndex }) => {
+console.log("get data here");
+type EditLetterInputProps = {
+    letterObj: any;
+    attemptListIndex: number;
+    letterObjectIndex: number;
+};
+
+const EditLetterInput = ({
+    letterObj,
+    attemptListIndex,
+    letterObjectIndex,
+}: EditLetterInputProps) => {
     const { editClueLetter, blurFromClue } = useEditClue();
 
-    const handleBlur = (e, attemptListIndex, letterObjectIndex) => {
+    const handleBlur = (e: any, attemptListIndex: number, letterObjectIndex: number) => {
         blurFromClue(e, attemptListIndex, letterObjectIndex);
     };
 
-    const handleEdit = (e, attemptListIndex, letterObjectIndex) => {
+    const handleEdit = (e: any, attemptListIndex: number, letterObjectIndex: number) => {
         if (checkIfString(e.target.value)) editClueLetter(e, attemptListIndex, letterObjectIndex);
         else blurFromClue(e, attemptListIndex, letterObjectIndex);
     };
 
-    const handleFocus = (e) => {
+    const handleFocus = (e: any) => {
         e.target.select();
     };
 
-    const handleSubmit = (e) => e.preventDefault();
+    const handleSubmit = (e: any) => e.preventDefault();
 
     return (
         <Form
