@@ -11,7 +11,7 @@ const App = () => {
     return (
         <>
             <Container className="mt-1">
-                <GameEndModal />
+                {/* <GameEndModal /> */}
                 <Header />
                 <GuessForm />
                 <Footer />
